@@ -1,0 +1,54 @@
+body {
+	background: url('http://www.osierpublishing.co.uk/wp-content/uploads/2012/05/writersdesk.jpg') no-repeat;
+	height: 100vh;
+}
+
+.calculator-container {
+	background: white;
+	width: 90%;
+	max-width: 400px;
+	padding: 20px;
+	margin: auto;
+}
+
+.calculator-container .output-area {
+	padding: 5px;
+	border: 1px black solid;
+}
+
+.calculator-container h3 {
+	text-align: right;
+}
+.calc-area-numbers p.number-button {
+	display: inline-block;
+	border: 1px black solid;
+	width: 30%;
+	padding: 13.5% 0px;
+	text-align: center;
+
+}
+
+.calc-area-numbers {
+	float: left;
+	width: 88%;
+}
+
+.calc-area-symbols {
+	float: left;
+	width: 12%;
+}
+
+.calc-area-symbols p {
+	width: 100%;
+	border: 1px black solid;
+	padding: 36% 0;
+	text-align: center;
+}
+
+/*Clearfix hack*/
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
