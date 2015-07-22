@@ -3,20 +3,35 @@
 	<head>
 		<link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
 		<!-- <link rel="stylesheet" href="style.css"> -->
-		<script src="main.js"></script>
 		<title>A rad calculator</title>
 	</head>
 	<body>
-		<input id="result" placeholder="result" type="text">
-		<input id="number_0" placeholder="number 0" type="text">
+		<input id="inputdisplay" placeholder="Ready">
+	    <br>
 		<span id="operator"></span>
-		<input id="number_1" placeholder="number 1" type="text">
 		<div class="operator_bay">
 		    <button id="add_button" type="button">+</button>
 		    <button id="sub_button" type="button">-</button>
 		    <button id="mul_button" type="button">*</button>
 		    <button id="div_button" type="button">/</button>
 		</div>
+	    <br>
+	    <button type="button" onclick="input_digit(1)">1</button>
+	    <button type="button" onclick="input_digit(2)">2</button>
+	    <!-- <button type="button" onclick="input_digit(3)">3</button>
+	    <br>
+	    <button type="button" onclick="input_digit(4)">4</button>
+	        <button type="button" onclick="input_digit(5)">5</button>
+	     <button type="button" onclick="input_digit(6)">6</button>
+	     <br>
+	     <button type="button" onclick="input_digit(7)">7</button>
+	     <button type="button" onclick="input_digit(8)">8</button>
+	     <button type="button" onclick="input_digit(9)">9</button>
+	     <br>
+	     <button type="button" onclick="input_digit(0)">0</button> -->
 
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="main.js"></script>
 	</body>
 </html>
