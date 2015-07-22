@@ -55,3 +55,12 @@ function divide_numbers(operand1, operand2) {
     $("#result").val(result);
     $("#operator").text("/");
 }
+
+function input_digit(digit) {
+  $("#inputdisplay").val(digit);
+}
+
+var operand_array = ["",""];
+var number_index = 0;
+var operator = '+';
+operand_array[number_index]+=digit;
