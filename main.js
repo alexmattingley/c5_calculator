@@ -56,8 +56,11 @@ function divide_numbers(operand1, operand2) {
     $("#operator").text("/");
 }
 
+//this function allows you to input multidigit values into the inputdisplay
 function input_digit(digit) {
-  $("#inputdisplay").val(digit);
+  var firstNumInput = $("#inputdisplay").val();
+  var extendedNumInput = firstNumInput + digit;
+  $("#inputdisplay").val(extendedNumInput);
 }
 
 var operand_array = ["",""];
