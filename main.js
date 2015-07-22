@@ -1,10 +1,12 @@
 // operator button functionality
-var add = null;
+var result = null;
 $("#add_button").click(function(){
-  console.log(add_numbers(1,2));
+  add_numbers();
 });
 
-function add_numbers(x,y){
-  var add = x+y;
-  return add;    
+function add_numbers(){
+  var number_0 = $("#number_0").val();
+  var number_1 = $('#number_1').val();
+  var result = parseInt(number_0) + parseInt(number_1);
+  $("#result").val(result);     
 }
