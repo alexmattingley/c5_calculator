@@ -44,8 +44,16 @@ $("#mul_button").click(function(){
 function div_numbers(){
   var number_0 = $("#number_0").val();
   var number_1 = $('#number_1').val();
-  var result = parseInt(number_0) / parseInt(number_1);
-  $("#result_display").text(result);  
+  
+  if (number_1 == 0){
+      $("#result_display").text("undefined");
+  }
+  
+  else {
+    var result = parseInt(number_0) / parseInt(number_1);
+    $("#result_display").text(result);
+  }
+    
 };
 
 //calling div_numbers
