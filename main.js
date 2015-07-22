@@ -53,10 +53,22 @@ function div_numbers(){
     var result = parseInt(number_0) / parseInt(number_1);
     $("#result_display").text(result);
   }
-    
+
 };
 
 //calling div_numbers
 $("#div_button").click(function(){
   div_numbers();
 });
+
+
+//Ok, so here I will be figuring out how to add each of the numbers to the input-box.
+
+$("#num_1").click(function(){
+  var button_val = $("#num_1").attr('value');
+  $('#input-box').val(button_val);
+});
+
+
+
+
