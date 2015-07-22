@@ -3,6 +3,17 @@ body {
 	height: 100vh;
 }
 
+
+div#result_display {
+	background: white;
+	border: 1px black solid;
+	height: 24px;
+	width: 344px;
+	margin-bottom: 5px;
+
+}
+
+/*original styles, need to be modified for new structure*/
 .calculator-container {
 	background: white;
 	width: 90%;
