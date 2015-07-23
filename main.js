@@ -4,11 +4,11 @@ var operator = null;
 
 //creating add numbers function
 function add_numbers(){
-  var number_0 = $("#number_0").val();
-  var number_1 = $('#number_1').val();
+  var number_0 = $(operand_array[0]).val();
+  var number_1 = $(operand_array[0]).val();
   var result = parseInt(number_0) + parseInt(number_1);
   var operator = "+"
-  $("#result_display").text(result);     
+  $("#result_display").text(operator);     
 }
 
 //calling addnumbers on the click of id add_button
@@ -73,13 +73,19 @@ var operand_array = ['',''];
 var number_index = 0;
 operand_array[number_index]; 
 
+var new_value="";
 function number_click(button_number, digit_value) {
   var first_digit_val = $('#input-box').val();
-  var new_value= first_digit_val + digit_value;
+  new_value= first_digit_val + digit_value;
   $('#input-box').val(new_value);
-  operand_array[number_index] += new_value;
-  console.log(operand_array[0]);
+  operand_array[number_index] = operand_array[number_index] + digit_value;
+  console.log(operand_array);
 }
+
+//user chooses operator
+
+
+
 
 
 
