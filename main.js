@@ -1,20 +1,40 @@
+//Ok, so here I will be figuring out how to add each of the numbers to the input-box.
 
+var operand_array = ['',''];
+var number_index = 0;
+operand_array[number_index];
 var result = null;
-var operator = null;
+var operator = null; 
 
-//creating add numbers function
-function add_numbers(){
-  var number_0 = $(operand_array[0]).val();
-  var number_1 = $(operand_array[0]).val();
-  var result = parseInt(number_0) + parseInt(number_1);
-  var operator = "+"
-  $("#result_display").text(operator);     
+var new_value="";
+function number_click(button_number, digit_value) {
+  var first_digit_val = $('#input-box').val();
+  new_value= first_digit_val + digit_value;
+  $('#input-box').val(new_value);
+  operand_array[number_index] = operand_array[number_index] + digit_value;
+  console.log(operand_array);
 }
 
-//calling addnumbers on the click of id add_button
+//user chooses operator
 $("#add_button").click(function(){
-  add_numbers();
+  operator = "+";
+  var post_operator = operand_array[0] + operator;
+  $('#input-box').val(post_operator);
+  number_index = 1;
 });
+
+//creating add numbers function
+//function add_numbers(){
+//  var number_0 = $(operand_array[0]).val();
+//  var number_1 = $(operand_array[1]).val();
+//  var result = parseInt(number_0) + parseInt(number_1);  
+//}
+
+//calling addnumbers on the click of id add_button
+//$("#add_button").click(function(){
+//  var number_index = 1;
+//  add_numbers();
+//});
 
 // defining sub_numbers
 function sub_numbers(){
@@ -66,23 +86,6 @@ $("#div_button").click(function(){
   div_numbers();
 });
 
-
-//Ok, so here I will be figuring out how to add each of the numbers to the input-box.
-
-var operand_array = ['',''];
-var number_index = 0;
-operand_array[number_index]; 
-
-var new_value="";
-function number_click(button_number, digit_value) {
-  var first_digit_val = $('#input-box').val();
-  new_value= first_digit_val + digit_value;
-  $('#input-box').val(new_value);
-  operand_array[number_index] = operand_array[number_index] + digit_value;
-  console.log(operand_array);
-}
-
-//user chooses operator
 
 
 
