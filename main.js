@@ -5,6 +5,7 @@ var number_index = 0;
 operand_array[number_index];
 var result = null;
 var operator = null; 
+var final_number;
 
 var new_value="";
 function number_click(button_number, digit_value) {
@@ -23,12 +24,24 @@ $("#add_button").click(function(){
   number_index = 1;
 });
 
+function calculate() {
+  
+  switch(operator) {
+    case '+':
+      add_numbers();
+      $('#input-box').val(final_number);
+      break;
+    case '-':
+    //   final_number = operand_array[0] + operand_array[1];
+    //   break;
+  }
+
+}
+
 //creating add numbers function
-//function add_numbers(){
-//  var number_0 = $(operand_array[0]).val();
-//  var number_1 = $(operand_array[1]).val();
-//  var result = parseInt(number_0) + parseInt(number_1);  
-//}
+function add_numbers(){
+ final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);  
+}
 
 //calling addnumbers on the click of id add_button
 //$("#add_button").click(function(){
