@@ -16,13 +16,31 @@ function number_click(button_number, digit_value) {
   console.log(operand_array);
 }
 
-//user chooses operator
+//user chooses operator +
 $("#add_button").click(function(){
   operator = "+";
   var post_operator = operand_array[0] + operator;
   $('#input-box').val(post_operator);
   number_index = 1;
 });
+
+$("#sub_button").click(function(){
+  operator = "-";
+  var post_operator = operand_array[0] + operator;
+  $('#input-box').val(post_operator);
+  number_index = 1;
+});
+
+//creating add numbers function
+function add_numbers(){
+ final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);  
+}
+
+// defining sub_numbers
+function sub_numbers(){
+    final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
+}
+
 
 function calculate() {
   
@@ -32,36 +50,27 @@ function calculate() {
       $('#input-box').val(final_number);
       break;
     case '-':
-    //   final_number = operand_array[0] + operand_array[1];
-    //   break;
+      sub_numbers();
+      $('#input-box').val(final_number);
+      break;
   }
 
 }
 
-//creating add numbers function
-function add_numbers(){
- final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);  
-}
 
-//calling addnumbers on the click of id add_button
-//$("#add_button").click(function(){
-//  var number_index = 1;
-//  add_numbers();
-//});
+// // defining sub_numbers
+// function sub_numbers(){
+//   var number_0 = $("#number_0").val();
+//   var number_1 = $('#number_1').val();
+//   var result = parseInt(number_0) - parseInt(number_1);
+//   var operator = "-";
+//   $("#result_display").text(result);     
+// }
 
-// defining sub_numbers
-function sub_numbers(){
-  var number_0 = $("#number_0").val();
-  var number_1 = $('#number_1').val();
-  var result = parseInt(number_0) - parseInt(number_1);
-  var operator = "-";
-  $("#result_display").text(result);     
-}
-
-// calling sub_numbers on click
-$("#sub_button").click(function(){
-  sub_numbers();
-});
+// // calling sub_numbers on click
+// $("#sub_button").click(function(){
+//   sub_numbers();
+// });
 
 //defining mul_numbers
 function mul_numbers(){
