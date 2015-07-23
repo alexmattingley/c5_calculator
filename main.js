@@ -9,11 +9,17 @@ var final_number;
 
 var new_value="";
 function number_click(button_number, digit_value) {
-  var first_digit_val = $('#input-box').val();
-  new_value= first_digit_val + digit_value;
-  $('#input-box').val(new_value);
-  operand_array[number_index] = operand_array[number_index] + digit_value;
-  console.log(operand_array);
+  if (refresh_boolean) {
+    refresh_display();
+    refresh_boolean = false;
+  }
+  else{
+    var first_digit_val = $('#input-box').val();
+    new_value= first_digit_val + digit_value;
+    $('#input-box').val(new_value);
+    operand_array[number_index] = operand_array[number_index] + digit_value;
+    console.log(operand_array);
+  };
 }
 
 //user chooses operator +
@@ -74,6 +80,8 @@ function div_numbers(){
 
 };
 
+var refresh_boolean = false;
+
 function calculate() {
   
   switch(operator) {
@@ -90,11 +98,31 @@ function calculate() {
       div_numbers();
       break;
   }
+  refresh_boolean = true;
+  clear_data();
+}
+function clear_data() {
+  operand_array[0] = '';
+  operand_array[1] = '';
+  operator = '';
+  number_index = 0;
+}
 
+function refresh_display() {
+  console.log('refresh_display called');
+  $('#input-box').val(operand_array[0] + operator + operand_array[1]);
 }
 
 
+$('#ac_button').click(function(){
+  clear_data();
+  refresh_display();
+  refresh_boolean = false;
+});
 
+$('#num_1').click(function(){
+  
+})
 
 
 
