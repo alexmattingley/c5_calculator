@@ -12,14 +12,13 @@ function number_click(button_number, digit_value) {
   if (refresh_boolean) {
     refresh_display();
     refresh_boolean = false;
+
   }
-  else{
-    var first_digit_val = $('#input-box').val();
-    new_value= first_digit_val + digit_value;
-    $('#input-box').val(new_value);
-    operand_array[number_index] = operand_array[number_index] + digit_value;
-    console.log(operand_array);
-  };
+  var first_digit_val = $('#input-box').val();
+  new_value= first_digit_val + digit_value;
+  $('#input-box').val(new_value);
+  operand_array[number_index] = operand_array[number_index] + digit_value;
+  console.log(operand_array);
 }
 
 //user chooses operator +
