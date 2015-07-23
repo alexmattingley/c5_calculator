@@ -31,82 +31,73 @@ $("#sub_button").click(function(){
   number_index = 1;
 });
 
+$("#mul_button").click(function(){
+  operator = "*";
+  var post_operator = operand_array[0] + operator;
+  $('#input-box').val(post_operator);
+  number_index = 1;
+});
+
+$("#div_button").click(function(){
+  operator = "/";
+  var post_operator = operand_array[0] + operator;
+  $('#input-box').val(post_operator);
+  number_index = 1;
+});
 //creating add numbers function
 function add_numbers(){
- final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);  
+ final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);
+ $('#input-box').val(final_number);  
 }
 
 // defining sub_numbers
 function sub_numbers(){
-    final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
+  final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
+  $('#input-box').val(final_number);
 }
 
+function mul_numbers(){
+  final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]);
+  $('#input-box').val(final_number); 
+};
+
+function div_numbers(){
+
+  if (operand_array[1] == 0){
+      $('#input-box').val("undefined");
+  }
+  
+  else {
+    final_number = parseInt(operand_array[0]) / parseInt(operand_array[1]);
+    $('#input-box').val(final_number); 
+  }
+
+};
 
 function calculate() {
   
   switch(operator) {
     case '+':
       add_numbers();
-      $('#input-box').val(final_number);
       break;
     case '-':
       sub_numbers();
-      $('#input-box').val(final_number);
+      break;
+    case '*':
+      mul_numbers();
+      break;
+    case '/':
+      div_numbers();
       break;
   }
 
 }
 
 
-// // defining sub_numbers
-// function sub_numbers(){
-//   var number_0 = $("#number_0").val();
-//   var number_1 = $('#number_1').val();
-//   var result = parseInt(number_0) - parseInt(number_1);
-//   var operator = "-";
-//   $("#result_display").text(result);     
-// }
 
-// // calling sub_numbers on click
-// $("#sub_button").click(function(){
-//   sub_numbers();
-// });
 
-//defining mul_numbers
-function mul_numbers(){
-  var number_0 = $("#number_0").val();
-  var number_1 = $('#number_1').val();
-  var result = parseInt(number_0) * parseInt(number_1);
-  var operator = "+";
-  $("#result_display").text(result);  
-};
 
-//calling mul_numbers
-$("#mul_button").click(function(){
-  mul_numbers();
-});
 
-//defining div_numbers
-function div_numbers(){
-  var number_0 = $("#number_0").val();
-  var number_1 = $('#number_1').val();
-  
-  if (number_1 == 0){
-      $("#result_display").text("undefined");
-  }
-  
-  else {
-    var result = parseInt(number_0) / parseInt(number_1);
-    $("#result_display").text(result);
-  }
-  var operator = '/';
-
-};
-
-//calling div_numbers
-$("#div_button").click(function(){
-  div_numbers();
-});
 
 
 
