@@ -4,7 +4,6 @@ Defining global/empty/null variables
 
 var operand_array = ['',''];
 var number_index = 0;
-operand_array[number_index];
 var result = null;
 var operator = null; 
 var final_number;
@@ -105,7 +104,7 @@ function mul_numbers(){
 
 //creation of div_numbers function
 function div_numbers(){
-
+  //this if statement is to prevent a divide by 0
   if (operand_array[1] == 0){
       $('#input-box').val("undefined");
   }
@@ -117,7 +116,18 @@ function div_numbers(){
 
 };
 
+/*************************
+****End of operator action functions
+**************************/
 
+/********************
+Function name(s): calculate()
+Purpose: This function calculates and is triggered on a click of the equal button. 
+  It ultimately calls the operator actions
+Params: N/A
+Globals: refresh_boolean
+returns: N/A
+********************/
 
 function calculate() {
   
@@ -139,7 +149,13 @@ function calculate() {
   clear_data();
 }
 
-
+/********************
+Function name(s): clear data
+Purpose: This function clears the operand_array values but NOT the display value
+Params: N/A
+Globals: operand_array, operator, number_index
+returns: N/A
+********************/
 
 function clear_data() {
   operand_array[0] = '';
@@ -148,21 +164,34 @@ function clear_data() {
   number_index = 0;
 }
 
+
+/********************
+Function name(s): refresh display
+Purpose: This function clears the display values but NOT the operand value
+Params: N/A
+Globals: Not redefining any variables.
+returns: N/A
+********************/
+
 function refresh_display() {
   console.log('refresh_display called');
   $('#input-box').val(operand_array[0] + operator + operand_array[1]);
 }
 
+/********************
+Function name(s): A/C button
+Purpose: This function is triggered on the click of ac_button and clears 
+both the display and the data
+Params: N/A
+Globals: refresh_boolean
+returns: N/A
+********************/
 
 $('#ac_button').click(function(){
   clear_data();
   refresh_display();
   refresh_boolean = false;
 });
-
-$('#num_1').click(function(){
-  
-})
 
 
 
