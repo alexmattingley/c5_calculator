@@ -1,6 +1,6 @@
 # c5_calculator
 
-Make seperate branches for each version
+Make seperate branches for each version<br>
 Example branch names:
 - v0.1
 - v0.5
