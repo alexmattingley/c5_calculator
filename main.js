@@ -13,12 +13,12 @@ var new_value="";
 
 /********************
 Function name: number click()
-Purpose: activates on click of any of the number keys
-Params: button_number, digit_value
+Purpose: activates on click of any of the number buttons
+Params: digit_value
 Globals: new_value, operand_array
 returns: N/A
 ********************/
-function number_click(button_number, digit_value) {
+function number_click(digit_value) {
   if (refresh_boolean) {
     refresh_display();
     refresh_boolean = false;
