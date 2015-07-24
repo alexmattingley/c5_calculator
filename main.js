@@ -9,7 +9,7 @@ var result = null;
 var operator = null; 
 var final_number;
 var new_value="";
-
+var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and us.
 
 /********************
 Function name: number click()
@@ -19,11 +19,12 @@ Globals: new_value, operand_array
 returns: N/A
 ********************/
 function number_click(digit_value) {
+  //This part of the function is only activated when the = symbol has been hit
   if (refresh_boolean) {
     refresh_display();
     refresh_boolean = false;
-
   }
+
   var first_digit_val = $('#input-box').val();
   new_value= first_digit_val + digit_value;
   $('#input-box').val(new_value);
@@ -31,7 +32,14 @@ function number_click(digit_value) {
   console.log(operand_array);
 }
 
-//user chooses operator +
+/********************
+Function name(s): operator buttons/anonymous functions
+Purpose: activates on clicks of operator buttons. These functions mirror each other
+Params: N/A
+Globals: operator, number_index
+returns: N/A
+********************/
+// Activates on the press of the + button
 $("#add_button").click(function(){
   operator = "+";
   var post_operator = operand_array[0] + operator;
@@ -39,6 +47,7 @@ $("#add_button").click(function(){
   number_index = 1;
 });
 
+//Activates on the press of the - button
 $("#sub_button").click(function(){
   operator = "-";
   var post_operator = operand_array[0] + operator;
@@ -46,6 +55,7 @@ $("#sub_button").click(function(){
   number_index = 1;
 });
 
+//Activates on the press of the * button
 $("#mul_button").click(function(){
   operator = "*";
   var post_operator = operand_array[0] + operator;
@@ -89,7 +99,7 @@ function div_numbers(){
 
 };
 
-var refresh_boolean = false;
+
 
 function calculate() {
   
