@@ -1,4 +1,6 @@
-//Ok, so here I will be figuring out how to add each of the numbers to the input-box.
+/**************
+Defining empty/null variables
+**************/
 
 var operand_array = ['',''];
 var number_index = 0;
@@ -6,8 +8,16 @@ operand_array[number_index];
 var result = null;
 var operator = null; 
 var final_number;
-
 var new_value="";
+
+
+/********************
+Function name: number click()
+Purpose: activates on click of any of the number keys
+Params: button_number, digit_value
+Globals: new_value, operand_array
+returns: N/A
+********************/
 function number_click(button_number, digit_value) {
   if (refresh_boolean) {
     refresh_display();
