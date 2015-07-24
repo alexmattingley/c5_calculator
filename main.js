@@ -8,7 +8,7 @@ var result = null;
 var operator = null; 
 var final_number;
 var new_value="";
-var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and us.
+var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
 
 /********************
 Function name: number click()
@@ -129,24 +129,24 @@ Globals: refresh_boolean
 returns: N/A
 ********************/
 
-function calculate() {
+function calculate() {//define calculate function
   
-  switch(operator) {
-    case '+':
-      add_numbers();
+  switch(operator) {//beginning of switch
+    case '+'://triggers on plus symbol
+      add_numbers();//calls add numbers function
       break;
-    case '-':
-      sub_numbers();
+    case '-'://triggers on minus symbol
+      sub_numbers();//calls subtract function
       break;
-    case '*':
-      mul_numbers();
+    case '*'://triggers on multiply
+      mul_numbers();//calls multiply function
       break;
-    case '/':
-      div_numbers();
+    case '/'://triggers on divide
+      div_numbers();//calls divide function
       break;
   }
-  refresh_boolean = true;
-  clear_data();
+  refresh_boolean = true;//allows someone to but new number into opperand_array and the display
+  clear_data();//clears the values from opperand array. see clear_data function below.
 }
 
 /********************
