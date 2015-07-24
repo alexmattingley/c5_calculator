@@ -1,5 +1,5 @@
 /**************
-Defining empty/null variables
+Defining global/empty/null variables
 **************/
 
 var operand_array = ['',''];
@@ -63,29 +63,47 @@ $("#mul_button").click(function(){
   number_index = 1;
 });
 
+//Activates on the press of the / button
 $("#div_button").click(function(){
   operator = "/";
   var post_operator = operand_array[0] + operator;
   $('#input-box').val(post_operator);
   number_index = 1;
 });
-//creating add numbers function
+
+/*************************
+****End of operator buttons
+**************************/
+
+/********************
+Function name(s): operator action functions. These include add_numbers(), sub_numbers(),
+  mul_numbers(), div_numbers().
+Purpose: These functions each perform an operation on a set of numbers
+Params: N/A
+Globals: final_number
+returns: N/A
+********************/
+
+
+//creation of add_numbers function
 function add_numbers(){
  final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);
  $('#input-box').val(final_number);  
 }
 
-// defining sub_numbers
+// creation of sub_numbers function
 function sub_numbers(){
   final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
   $('#input-box').val(final_number);
 }
 
+//creation of mul_numbers function
 function mul_numbers(){
   final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]);
   $('#input-box').val(final_number); 
 };
 
+//creation of div_numbers function
 function div_numbers(){
 
   if (operand_array[1] == 0){
