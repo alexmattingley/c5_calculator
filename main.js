@@ -194,7 +194,7 @@ $('#ac_button').click(function(){
 });
 
 $('#c_button').click(function() {
-  operand_array[1] = '';
+  operand_array[number_index] = '';
   $('#input-box').val(operand_array[0] + operator + operand_array[1]);
 });
 
