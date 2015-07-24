@@ -84,34 +84,35 @@ returns: N/A
 ********************/
 
 
-//creation of add_numbers function
-function add_numbers(){
- final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);
- $('#input-box').val(final_number);  
+
+//DWP THIS ONE
+function add_numbers(){ //defining add_numbers
+ final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]); //defining final_number, which is the operands added together
+ $('#input-box').val(final_number); //inputing final number into display
 }
 
-// creation of sub_numbers function
-function sub_numbers(){
-  final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
-  $('#input-box').val(final_number);
+
+function sub_numbers(){ //defining sub_numbers
+  final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);//defining final_number, which is the operands subtracted
+  $('#input-box').val(final_number); //inputing final number into display
 }
 
-//creation of mul_numbers function
-function mul_numbers(){
-  final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]);
-  $('#input-box').val(final_number); 
+
+function mul_numbers(){ //defining mul_numbers
+  final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]); //defining final_number, which is the operands multiplied
+  $('#input-box').val(final_number); //inputing final number into display
 };
 
 //creation of div_numbers function
-function div_numbers(){
+function div_numbers(){ //creation of div_numbers function
   //this if statement is to prevent a divide by 0
-  if (operand_array[1] == 0){
-      $('#input-box').val("undefined");
+  if (operand_array[1] == 0){ //if divide by 0
+      $('#input-box').val("undefined"); //insert undefined if trying to divide by 0
   }
   
-  else {
-    final_number = parseInt(operand_array[0]) / parseInt(operand_array[1]);
-    $('#input-box').val(final_number); 
+  else { //otherwise run divide
+    final_number = parseInt(operand_array[0]) / parseInt(operand_array[1]); //defining final number which is the operands divided
+    $('#input-box').val(final_number); //inputing final number into display
   }
 
 };
