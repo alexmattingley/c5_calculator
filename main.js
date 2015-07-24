@@ -193,6 +193,10 @@ $('#ac_button').click(function(){
   refresh_boolean = false;
 });
 
+$('#c_button').click(function() {
+  operand_array[1] = '';
+  console.log(operand_array);
+});
 
 
 
