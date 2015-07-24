@@ -100,6 +100,24 @@ function calculate() {
   refresh_boolean = true;
   clear_data();
 }
+
+// $('#txtSearchProdAssign').keypress(function (e) {
+//  var key = e.which;
+//  if(key == 13)  // the enter key code
+//   {
+//     $('input[name = butAssignProd]').click();
+//     return false;  
+//   }
+// });   
+
+$('body').on('keypress', function(e) {
+  console.log('You hit the enter key');
+  if(e == 13)  // the enter key code
+  {
+   console.log('You hit the enter key');
+  }   
+});
+
 function clear_data() {
   operand_array[0] = '';
   operand_array[1] = '';
