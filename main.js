@@ -193,6 +193,15 @@ $('#ac_button').click(function(){
   refresh_boolean = false;
 });
 
+/********************
+Function name(s): C button
+Purpose: This function is triggered on the click of c_button and clears 
+both the display and the data of the most recently typed number
+Params: N/A
+Globals: operand_array
+returns: N/A
+********************/
+
 $('#c_button').click(function() {
   operand_array[number_index] = '';
   $('#input-box').val(operand_array[0] + operator + operand_array[1]);
