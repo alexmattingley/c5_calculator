@@ -1,5 +1,12 @@
 # c5_calculator
 
+Make seperate branches for each version
+Example branch names:
+- v0.1
+- v0.5
+- v1.0
+- etc...
+
 ## Calculator 0.1
 HTML:
 - Input: number_0
