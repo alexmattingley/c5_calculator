@@ -2,12 +2,20 @@
 Defining global/empty/null variables
 **************/
 
+//number variables and arrays
 var operand_array = ['',''];
 var number_index = 0;
 var result = null;
-var operator = null; 
 var final_number;
 var new_value="";
+
+//operator variables arrays
+var operator = null;
+var operator_index = 0;
+var operator_array = [];
+
+//refresh variables 
+
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
 
 /********************
@@ -53,6 +61,10 @@ $("#add_button").click(function(){
 //Activates on the press of the - button
 $("#sub_button").click(function(){
   operator = "-";
+  operator_array[operator_index] = operator;
+  operator_index = operator_index + 1;
+  console.log(operator_array);
+  console.log(operator_index);
   var post_operator = operand_array[0] + operator;
   $('#input-box').val(post_operator);
   number_index = 1;
@@ -74,8 +86,7 @@ $("#div_button").click(function(){
   number_index = 1;
 });
 
-var operator_index = 0;
-var operator_array = [];
+
 
 
 
