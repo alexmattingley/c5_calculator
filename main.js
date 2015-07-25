@@ -231,6 +231,8 @@ returns: N/A
 
 $('#c_button').click(function() {
   operand_array[number_index] = '';
+  operator_array = []; //clears out the operator array
+  operator_index = 0; //sets the operator index back to zero.
   $('#input-box').val(operand_array[0] + operator + operand_array[1]);
 });
 
