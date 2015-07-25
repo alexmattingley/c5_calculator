@@ -24,10 +24,10 @@ function number_click(digit_value) {
     refresh_boolean = false;
   }
 
-  var first_digit_val = $('#input-box').val();
-  new_value= first_digit_val + digit_value;
-  $('#input-box').val(new_value);
-  operand_array[number_index] = operand_array[number_index] + digit_value;
+  var first_digit_val = $('#input-box').val(); //this is taking the first digit clicked and assigning it to a variable
+  new_value= first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
+  $('#input-box').val(new_value);//this is taking that new value and putting it in the display
+  operand_array[number_index] = operand_array[number_index] + digit_value; //this is assigining the score card or operand_array
   console.log(operand_array);
 }
 
@@ -41,6 +41,10 @@ returns: N/A
 // Activates on the press of the + button
 $("#add_button").click(function(){
   operator = "+";
+  operator_array[operator_index] = operator;
+  operator_index = operator_index + 1;
+  console.log(operator_array);
+  console.log(operator_index);
   var post_operator = operand_array[0] + operator;
   $('#input-box').val(post_operator);
   number_index = 1;
@@ -70,6 +74,11 @@ $("#div_button").click(function(){
   number_index = 1;
 });
 
+var operator_index = 0;
+var operator_array = [];
+
+
+
 /*************************
 ****End of operator buttons
 **************************/
@@ -84,35 +93,31 @@ returns: N/A
 ********************/
 
 
-
-//DWP THIS ONE
-function add_numbers(){ //defining add_numbers
- final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]); //defining final_number, which is the operands added together
- $('#input-box').val(final_number); //inputing final number into display
+//creation of add_numbers function
+function add_numbers(){
+ final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);
+ $('#input-box').val(final_number);  
 }
-
-
-function sub_numbers(){ //defining sub_numbers
-  final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);//defining final_number, which is the operands subtracted
-  $('#input-box').val(final_number); //inputing final number into display
+// creation of sub_numbers function
+function sub_numbers(){
+  final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
+  $('#input-box').val(final_number);
 }
-
-
-function mul_numbers(){ //defining mul_numbers
-  final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]); //defining final_number, which is the operands multiplied
-  $('#input-box').val(final_number); //inputing final number into display
+//creation of mul_numbers function
+function mul_numbers(){
+  final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]);
+  $('#input-box').val(final_number); 
 };
-
 //creation of div_numbers function
-function div_numbers(){ //creation of div_numbers function
+function div_numbers(){
   //this if statement is to prevent a divide by 0
-  if (operand_array[1] == 0){ //if divide by 0
-      $('#input-box').val("undefined"); //insert undefined if trying to divide by 0
+  if (operand_array[1] == 0){
+      $('#input-box').val("undefined");
   }
   
-  else { //otherwise run divide
-    final_number = parseInt(operand_array[0]) / parseInt(operand_array[1]); //defining final number which is the operands divided
-    $('#input-box').val(final_number); //inputing final number into display
+  else {
+    final_number = parseInt(operand_array[0]) / parseInt(operand_array[1]);
+    $('#input-box').val(final_number); 
   }
 
 };
