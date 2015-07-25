@@ -1,5 +1,5 @@
 /**************
-Defining global/empty/null variables
+Defining global variables
 **************/
 
 //number variables and arrays
@@ -9,7 +9,7 @@ var result = null;
 var final_number;
 var new_value="";
 
-//operator variables arrays
+//operator variables and arrays
 var operator = null;
 var operator_index = 0;
 var operator_array = [];
@@ -73,6 +73,10 @@ $("#sub_button").click(function(){
 //Activates on the press of the * button
 $("#mul_button").click(function(){
   operator = "*";
+  operator_array[operator_index] = operator;
+  operator_index = operator_index + 1;
+  console.log(operator_array);
+  console.log(operator_index);
   var post_operator = operand_array[0] + operator;
   $('#input-box').val(post_operator);
   number_index = 1;
@@ -81,6 +85,10 @@ $("#mul_button").click(function(){
 //Activates on the press of the / button
 $("#div_button").click(function(){
   operator = "/";
+  operator_array[operator_index] = operator;
+  operator_index = operator_index + 1;
+  console.log(operator_array);
+  console.log(operator_index);
   var post_operator = operand_array[0] + operator;
   $('#input-box').val(post_operator);
   number_index = 1;
@@ -177,6 +185,8 @@ returns: N/A
 function clear_data() {
   operand_array[0] = '';
   operand_array[1] = '';
+  operator_array = [];
+  operator_index = 0;
   operator = '';
   number_index = 0;
 }
