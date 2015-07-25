@@ -3,7 +3,7 @@ Defining global variables
 **************/
 
 //number variables and arrays
-var operand_array = ['',''];
+var operand_array = [];
 var number_index = 0;
 var result = null;
 var final_number;
@@ -36,6 +36,7 @@ function number_click(digit_value) {
   new_value= first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $('#input-box').val(new_value);//this is taking that new value and putting it in the display
   operand_array[number_index] = operand_array[number_index] + digit_value; //this is assigining the score card or operand_array
+  console.log('number_index: ' + number_index);
   console.log(operand_array);
 }
 
@@ -53,9 +54,9 @@ $("#add_button").click(function(){
   operator_index = operator_index + 1;
   console.log(operator_array);
   console.log(operator_index);
-  var post_operator = operand_array[0] + operator;
+  var post_operator = operand_array[number_index] + operator;
   $('#input-box').val(post_operator);
-  number_index = 1;
+  number_index = number_index + 1;
 });
 
 //Activates on the press of the - button
