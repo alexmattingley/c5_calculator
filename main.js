@@ -36,9 +36,11 @@ function number_click(digit_value) {
   var first_digit_val = $('#input-box').val(); //this is taking the first digit clicked and assigning it to a variable
   new_value= first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $('#input-box').val(new_value);//this is taking that new value and putting it in the display
-  operand_array[number_index] = operand_array[number_index] + digit_value; //this is assigining the score card or operand_array
-
+  operand_array[number_index] = operand_array[number_index] + digit_value; //this is assigining the score card or operand_array;
   console.log(operand_array);
+  if(number_index > 0) {
+    operator_index = operator_index + 1;
+  }
 }
 
 /********************
@@ -53,7 +55,6 @@ returns: N/A
 //functions below.
 function operator_helper() {
   operator_array[operator_index] = operator;
-  operator_index = operator_index + 1;
   console.log(operator_array);
   console.log(operator_index);
   var post_operator = operand_array[number_index] + operator;
@@ -67,8 +68,9 @@ function operator_helper() {
 $("#add_button").click(function(){
   operator = "+";//setting the operator to +
   operator_helper(); //calling above function
-  if (operator_index >= 2) { //basically if we have hit the button more than once
-    console.log('your operator_index is >= two');
+
+  if (operator_index >= 1) { //basically if we have hit the button more than once
+    console.log('your operator_index is >= 1');
     add_numbers(); //call add_numbers();
     operand_array = []; //empty out array;
     operand_array[0] = final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
@@ -77,6 +79,7 @@ $("#add_button").click(function(){
     $('#input-box').val(final_number); //display final number
     number_index = number_index-1; //count back number index so we can put another value at [1] and do some more math.
   };
+  
 });
 
 //Activates on the press of the - button
