@@ -67,6 +67,13 @@ function operator_helper() {
 $("#add_button").click(function(){
   operator = "+";
   operator_helper();
+  if (operator_index >= 2) { //im on the right track, just not quite sure how to seal the deal
+    console.log('your operator_index is >= two');
+    calculate();
+    operand_array[0] = final_number;
+    console.log('your opperand_array: ' + operand_array);
+    console.log('your final_number: ' + final_number)
+  };
 });
 
 //Activates on the press of the - button
