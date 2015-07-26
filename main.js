@@ -45,9 +45,24 @@ function number_click(digit_value) {
 Function name(s): operator buttons/anonymous functions
 Purpose: activates on clicks of operator buttons. These functions mirror each other
 Params: N/A
-Globals: operator, number_index
+Globals: operator, number_index (this variable is the index for the opperand_array), operator_index
 returns: N/A
 ********************/
+
+//This function helps simplify the code for each of the operator buttons so we can avoid bugs. It is called in each of anonymous click
+//functions below.
+function operator_helper() {
+  operator_array[operator_index] = operator;
+  operator_index = operator_index + 1;
+  console.log(operator_array);
+  console.log(operator_index);
+  var post_operator = operand_array[number_index] + operator;
+  $('#input-box').val(post_operator);
+  number_index = number_index + 1;
+  operand_array[number_index] = '';
+}
+
+
 // Activates on the press of the + button
 $("#add_button").click(function(){
   operator = "+";
@@ -63,37 +78,14 @@ $("#sub_button").click(function(){
 //Activates on the press of the * button
 $("#mul_button").click(function(){
   operator = "*";
-  operator_array[operator_index] = operator;
-  operator_index = operator_index + 1;
-  console.log(operator_array);
-  console.log(operator_index);
-  var post_operator = operand_array[0] + operator;
-  $('#input-box').val(post_operator);
-  number_index = number_index + 1;
+  operator_helper();
 });
 
 //Activates on the press of the / button
 $("#div_button").click(function(){
   operator = "/";
-  operator_array[operator_index] = operator;
-  operator_index = operator_index + 1;
-  console.log(operator_array);
-  console.log(operator_index);
-  var post_operator = operand_array[0] + operator;
-  $('#input-box').val(post_operator);
-  number_index = number_index + 1;
+  operator_helper();
 });
-
-function operator_helper() {
-  operator_array[operator_index] = operator;
-  operator_index = operator_index + 1;
-  console.log(operator_array);
-  console.log(operator_index);
-  var post_operator = operand_array[number_index] + operator;
-  $('#input-box').val(post_operator);
-  number_index = number_index + 1;
-  operand_array[number_index] = '';
-}
 
 
 
@@ -182,12 +174,12 @@ returns: N/A
 ********************/
 
 function clear_data() {
-  operand_array[0] = '';
-  operand_array[1] = '';
+  number_index = 0;
+  operand_array = [];
+  operand_array[number_index] = ''; //this is currently failing to clear procedding operands
   operator_array = [];
   operator_index = 0;
   operator = '';
-  number_index = 0;
 }
 
 
@@ -201,7 +193,7 @@ returns: N/A
 
 function refresh_display() {
   console.log('refresh_display called');
-  $('#input-box').val(operand_array[0] + operator + operand_array[1]);
+  $('#input-box').val(operand_array[number_index]);
 }
 
 /********************
