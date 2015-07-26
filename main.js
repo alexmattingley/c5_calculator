@@ -69,10 +69,13 @@ $("#add_button").click(function(){
   operator_helper();
   if (operator_index >= 2) { //im on the right track, just not quite sure how to seal the deal
     console.log('your operator_index is >= two');
-    calculate();
+    add_numbers();
+    operand_array = [];
+    operand_array[1] = '';
     operand_array[0] = final_number;
-    console.log('your opperand_array: ' + operand_array);
-    console.log('your final_number: ' + final_number)
+    final_number = operand_array[0] + operator;
+    $('#input-box').val(final_number);
+    number_index = number_index-1;
   };
 });
 
@@ -183,7 +186,7 @@ returns: N/A
 function clear_data() {
   number_index = 0;
   operand_array = [];
-  operand_array[number_index] = ''; //this is currently failing to clear procedding operands
+  operand_array[number_index] = '';
   operator_array = [];
   operator_index = 0;
   operator = '';
