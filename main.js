@@ -51,26 +51,13 @@ returns: N/A
 // Activates on the press of the + button
 $("#add_button").click(function(){
   operator = "+";
-  operator_array[operator_index] = operator;
-  operator_index = operator_index + 1;
-  console.log(operator_array);
-  console.log(operator_index);
-  var post_operator = operand_array[number_index] + operator;
-  $('#input-box').val(post_operator);
-  number_index = number_index + 1;
-  operand_array[number_index] = '';
+  operator_helper();
 });
 
 //Activates on the press of the - button
 $("#sub_button").click(function(){
   operator = "-";
-  operator_array[operator_index] = operator;
-  operator_index = operator_index + 1;
-  console.log(operator_array);
-  console.log(operator_index);
-  var post_operator = operand_array[0] + operator;
-  $('#input-box').val(post_operator);
-  number_index = number_index + 1;
+  operator_helper();
 });
 
 //Activates on the press of the * button
@@ -97,7 +84,16 @@ $("#div_button").click(function(){
   number_index = number_index + 1;
 });
 
-
+function operator_helper() {
+  operator_array[operator_index] = operator;
+  operator_index = operator_index + 1;
+  console.log(operator_array);
+  console.log(operator_index);
+  var post_operator = operand_array[number_index] + operator;
+  $('#input-box').val(post_operator);
+  number_index = number_index + 1;
+  operand_array[number_index] = '';
+}
 
 
 
