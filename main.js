@@ -23,7 +23,7 @@ var refresh_boolean = false; //this for the reset after someone activates calcul
 Function name: number click()
 Purpose: activates on click of any of the number buttons
 Params: digit_value
-Globals: new_value, operand_array
+Globals: new_value, operand_array, number_index, new_value
 returns: N/A
 ********************/
 function number_click(digit_value) {
@@ -44,7 +44,8 @@ function number_click(digit_value) {
 Function name(s): operator buttons/anonymous functions
 Purpose: activates on clicks of operator buttons. These functions mirror each other
 Params: N/A
-Globals: operator, number_index (this variable is the index for the opperand_array), operator_index
+Globals: operator, number_index (this variable is the index for the opperand_array), 
+operator_index, operator_array, operand_array, final_number
 returns: N/A
 ********************/
 
@@ -122,7 +123,7 @@ Function name(s): operator action functions. These include add_numbers(), sub_nu
   mul_numbers(), div_numbers().
 Purpose: These functions each perform an operation on a set of numbers
 Params: N/A
-Globals: final_number
+Globals: final_number, operand_array
 returns: N/A
 ********************/
 
@@ -165,7 +166,7 @@ Function name(s): calculate()
 Purpose: This function calculates and is triggered on a click of the equal button. 
   It ultimately calls the operator actions
 Params: N/A
-Globals: refresh_boolean
+Globals: refresh_boolean, operator
 returns: N/A
 ********************/
 
@@ -193,7 +194,7 @@ function calculate() {//define calculate function
 Function name(s): clear data
 Purpose: This function clears the operand_array values but NOT the display value
 Params: N/A
-Globals: operand_array, operator, number_index
+Globals: operand_array, operator, number_index, operator_array, operator_index
 returns: N/A
 ********************/
 
@@ -211,7 +212,7 @@ function clear_data() {
 Function name(s): refresh display
 Purpose: This function clears the display values but NOT the operand value
 Params: N/A
-Globals: Not redefining any variables.
+Globals: operand_array, number_index
 returns: N/A
 ********************/
 
@@ -240,7 +241,7 @@ Function name(s): C button
 Purpose: This function is triggered on the click of c_button and clears 
 both the display and the data of the most recently typed number
 Params: N/A
-Globals: operand_array
+Globals: operand_array, number_index, operator
 returns: N/A
 ********************/
 
