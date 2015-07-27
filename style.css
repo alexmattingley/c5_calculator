@@ -4,17 +4,15 @@ body {
 }
 
 
-div#result_display {
+input.output-area {
 	background: white;
 	border: 1px black solid;
-	height: 24px;
-	width: 344px;
+	width: 100%;
+	box-sizing: border-box;
 	margin-bottom: 5px;
 
 }
 
-
-/*original styles, need to be modified for new structure*/
 .calculator-container {
 	background: white;
 	width: 90%;
@@ -24,33 +22,34 @@ div#result_display {
 }
 
 .calculator-container .output-area {
-	padding: 5px;
+	padding: 10px 5px;
 	border: 1px black solid;
-}
-
-.calculator-container h3 {
 	text-align: right;
 }
-.calc-area-numbers p.number-button {
+.number-bay .number-button {
 	display: inline-block;
 	border: 1px black solid;
-	width: 30%;
+	width: 32%;
 	padding: 13.5% 0px;
 	text-align: center;
 
 }
 
-.calc-area-numbers {
+.number-button {
+	margin: 5px auto;
+}
+
+.number-bay {
 	float: left;
 	width: 88%;
 }
 
-.calc-area-symbols {
+.operator-bay {
 	float: left;
 	width: 12%;
 }
 
-.calc-area-symbols p {
+.operator-bay button{
 	width: 100%;
 	border: 1px black solid;
 	padding: 36% 0;
