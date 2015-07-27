@@ -59,50 +59,10 @@ function operator_helper() {
   number_index = number_index + 1;
   operand_array[number_index] = '';
   operator_index = operator_index +1;
-}
-
-
-// Activates on the press of the + button
-$("#add_button").click(function(){
-  operator = "+";//setting the operator to +
-  operator_helper(); //calling above function
-
-  if (operator_array[operator_index] >= 2) { //basically if we have hit the button more than once
-    console.log('your operator_index is >= 2');
-
-    switch(operator_array[operator_index - 2]) {//beginning of switch
-    case '+'://triggers on plus symbol
-      add_numbers();//calls add numbers function
-      break;
-    case '-'://triggers on minus symbol
-      sub_numbers();//calls subtract function
-      break;
-    case '*'://triggers on multiply
-      mul_numbers();//calls multiply function
-      break;
-    case '/'://triggers on divide
-      div_numbers();//calls divide function
-      break;
-  }
-    operand_array = []; //empty out array;
-    operand_array[0] = final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
-    operand_array[1] = '';//make sure we can add stings to the [1] position
-    final_number = operand_array[0] + operator; //setting up final number for display
-    $('#input-box').val(final_number); //display final number
-    number_index = number_index-1; //count back number index so we can put another value at [1] and do some more math.
-  };
-  
-});
-
-//Activates on the press of the - button
-$("#sub_button").click(function(){
-  operator = "-";
-  operator_helper();
-   if (operator_index >= 2) { //basically if we have hit the button more than once
+  if (operator_index >= 2) { //basically if we have hit the button more than once
     console.log('your operator_index is >= 2');
     switch(operator_array[operator_index - 2]) {//beginning of switch
       case '+'://triggers on plus symbol
-        console.log('this should be triggering');
         add_numbers();//calls add numbers function
         break;
       case '-'://triggers on minus symbol
@@ -114,7 +74,7 @@ $("#sub_button").click(function(){
       case '/'://triggers on divide
         div_numbers();//calls divide function
         break;
-      };
+    };
     operand_array = []; //empty out array;
     operand_array[0] = final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
     operand_array[1] = '';//make sure we can add stings to the [1] position
@@ -123,38 +83,32 @@ $("#sub_button").click(function(){
     $('#input-box').val(final_number); //display final number
     number_index = number_index-1; //count back number index so we can put another value at [1] and do some more math.
   };
+}
+
+
+// Activates on the press of the + button
+$("#add_button").click(function(){
+  operator = "+";//setting the operator to +
+  operator_helper(); //calling above function
+  
+});
+
+//Activates on the press of the - button
+$("#sub_button").click(function(){
+  operator = "-";
+  operator_helper();
 });
 
 //Activates on the press of the * button
 $("#mul_button").click(function(){
   operator = "*";
   operator_helper();
-  if (operator_index >= 2) { //basically if we have hit the button more than once
-    console.log('your operator_index is >= two');
-    mul_numbers(); //call add_numbers();
-    operand_array = []; //empty out array;
-    operand_array[0] = final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
-    operand_array[1] = '';//make sure we can add stings to the [1] position
-    final_number = operand_array[0] + operator; //setting up final number for display
-    $('#input-box').val(final_number); //display final number
-    number_index = number_index-1; //count back number index so we can put another value at [1] and do some more math.
-  };
 });
 
 //Activates on the press of the / button
 $("#div_button").click(function(){
   operator = "/";
   operator_helper();
-  if (operator_index >= 2) { //basically if we have hit the button more than once
-    console.log('your operator_index is >= two');
-    div_numbers(); //call add_numbers();
-    operand_array = []; //empty out array;
-    operand_array[0] = final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
-    operand_array[1] = '';//make sure we can add stings to the [1] position
-    final_number = operand_array[0] + operator; //setting up final number for display
-    $('#input-box').val(final_number); //display final number
-    number_index = number_index-1; //count back number index so we can put another value at [1] and do some more math.
-  };
 });
 
 
