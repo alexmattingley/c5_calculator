@@ -52,6 +52,7 @@ returns: N/A
 //This function helps simplify the code for each of the operator buttons so we can avoid bugs. It is called in each of anonymous click
 //functions below.
 function operator_helper() {
+  //remember that before any of this runs, you set an operator value in the anon functions
   operator_array[operator_index] = operator;
   console.log(operator_array);
   console.log(operator_index);
@@ -77,7 +78,7 @@ function operator_helper() {
         break;
     };
     operand_array = []; //empty out array;
-    operand_array[0] = final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
+    operand_array[0] = '' + final_number; //set the final number(outcome) of the operation to the [0] postion of operand_array
     operand_array[1] = '';//make sure we can add stings to the [1] position
     final_number = operand_array[0] + operator; //setting up final number for display
     console.log('final_number after math: ' + final_number );
@@ -130,17 +131,17 @@ returns: N/A
 
 //creation of add_numbers function
 function add_numbers(){
- final_number = parseInt(operand_array[0]) + parseInt(operand_array[1]);
+ final_number = parseFloat(operand_array[0]) + parseFloat(operand_array[1]);
  $('#input-box').val(final_number);  
 }
 // creation of sub_numbers function
 function sub_numbers(){
-  final_number = parseInt(operand_array[0]) - parseInt(operand_array[1]);
+  final_number = parseFloat(operand_array[0]) - parseFloat(operand_array[1]);
   $('#input-box').val(final_number);
 }
 //creation of mul_numbers function
 function mul_numbers(){
-  final_number = parseInt(operand_array[0]) * parseInt(operand_array[1]);
+  final_number = parseFloat(operand_array[0]) * parseFloat(operand_array[1]);
   $('#input-box').val(final_number); 
 };
 //creation of div_numbers function
@@ -151,7 +152,7 @@ function div_numbers(){
   }
   
   else {
-    final_number = parseInt(operand_array[0]) / parseInt(operand_array[1]);
+    final_number = parseFloat(operand_array[0]) / parseFloat(operand_array[1]);
     $('#input-box').val(final_number); 
   }
 
@@ -251,6 +252,21 @@ $('#c_button').click(function() {
   operator_index = 0; //sets the operator index back to zero.
   $('#input-box').val(operand_array[0] + operator + operand_array[1]);
 });
+
+
+/***************
+operand_array['',''];
+index_pointer = 0
+input_array['4', '+', '3', '/', '16', '-', '3'];
+
+operator = '';
+for(var i = 0; i<input_array.length; i++) {
+  if(!isNaN(input_array[i])) //is it a number
+}
+
+input_array['11', '+', ''];
+in_pointer = 2
+*******************/
 
 
 
