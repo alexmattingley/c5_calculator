@@ -15,6 +15,13 @@ var operator = null;
 var operator_index = 0;
 var operator_array = [];
 console.log(operator_array);
+
+//input_variables
+
+var input_array = [];
+
+
+
 //refresh variables 
 
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
@@ -82,7 +89,6 @@ function operator_helper() {
     operand_array[1] = '';//make sure we can add stings to the [1] position
     final_number = operand_array[0] + operator; //setting up final number for display
     console.log('final_number after math: ' + final_number );
-    $('#input-box').val(final_number); //display final number
     number_index = number_index-1; //count back number index so we can put another value at [1] and do some more math.
   };
 }
@@ -132,17 +138,14 @@ returns: N/A
 //creation of add_numbers function
 function add_numbers(){
  final_number = parseFloat(operand_array[0]) + parseFloat(operand_array[1]);
- $('#input-box').val(final_number);  
 }
 // creation of sub_numbers function
 function sub_numbers(){
   final_number = parseFloat(operand_array[0]) - parseFloat(operand_array[1]);
-  $('#input-box').val(final_number);
 }
 //creation of mul_numbers function
 function mul_numbers(){
-  final_number = parseFloat(operand_array[0]) * parseFloat(operand_array[1]);
-  $('#input-box').val(final_number); 
+  final_number = parseFloat(operand_array[0]) * parseFloat(operand_array[1]); 
 };
 //creation of div_numbers function
 function div_numbers(){
@@ -153,7 +156,6 @@ function div_numbers(){
   
   else {
     final_number = parseFloat(operand_array[0]) / parseFloat(operand_array[1]);
-    $('#input-box').val(final_number); 
   }
 
 };
@@ -187,6 +189,7 @@ function calculate() {//define calculate function
       div_numbers();//calls divide function
       break;
   }
+  $('#input-box').val(final_number); 
   refresh_boolean = true;//allows someone to but new number into opperand_array and the display
   clear_data();//clears the values from opperand array. see clear_data function below.
 }
