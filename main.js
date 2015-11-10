@@ -59,6 +59,7 @@ returns: N/A
 var display_array =[];
 var display_index = 0;
 var for_display ='';
+var final_expression = '';
 
 function create_display() {
   console.log("operator index" , operator_index);
@@ -69,8 +70,14 @@ function create_display() {
   for(var x = 0; x < display_array.length; x++) {
     for_display = for_display + display_array[x];
     $('#input-box').val(for_display);
+    if(display_array[x] != '+' && display_array[x] != '-' && display_array[x] != '*' && display_array[x] != '/'){
+      var string_as_number = parseFloat(display_array[x]);
+      display_array[x] = string_as_number;
+    }
   }
 }
+
+
 
 //This function helps simplify the code for each of the operator buttons so we can avoid bugs. It is called in each of anonymous click
 //functions below.
@@ -183,22 +190,8 @@ returns: N/A
 
 function calculate() {//define calculate function
   
-  switch(operator) {//beginning of switch
-    case '+'://triggers on plus symbol
-      add_numbers();//calls add numbers function
-      break;
-    case '-'://triggers on minus symbol
-      sub_numbers();//calls subtract function
-      break;
-    case '*'://triggers on multiply
-      mul_numbers();//calls multiply function
-      break;
-    case '/'://triggers on divide
-      div_numbers();//calls divide function
-      break;
-  }
-  $('#input-box').val(final_number); 
-  refresh_boolean = true;//allows someone to but new number into opperand_array and the display
+
+  refresh_boolean = true;//allows someone to but new number into number_array and the display
   clear_data();//clears the values from opperand array. see clear_data function below.
 }
 
@@ -286,7 +279,6 @@ $(document).ready(function(){
 
   $('.number-button').click(function(){
     var number = $(this).text();
-    console.log(number);
     number_click(number);
   });
 
