@@ -271,6 +271,15 @@ input_array['11', '+', ''];
 in_pointer = 2
 *******************/
 
+$(document).ready(function(){
+
+  $('.number-button').click(function(){
+    var number = $(this).text();
+    console.log(number);
+    number_click(number);
+  });
+
+});
 
 
 
