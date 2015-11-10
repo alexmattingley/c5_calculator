@@ -62,15 +62,16 @@ function operator_helper() {
   //remember that before any of this runs, you set an operator value in the anon functions
   operator_array[operator_index] = operator;
   console.log(operator_array);
-  console.log(operator_index);
+  console.log("operator index" , operator_index);
   var post_operator = operand_array[number_index] + operator;
   $('#input-box').val(post_operator);
-  number_index = number_index + 1;
+  number_index++;
   operand_array[number_index] = '';
-  operator_index = operator_index +1;
-  if (operator_index >= 2) { //basically if we have hit the button more than once
-    console.log('your operator_index is >= 2');
-    switch(operator_array[operator_index - 2]) {//beginning of switch
+  operator_index++;
+  if (operator_index >= 2) { //basically if we have hit operand buttons more than once
+    var funny_variable = operator_array[operator_index-2];
+    console.log("operator_array at operator index-2" , funny_variable);
+    switch(operator_array[operator_index - 2]) {//If the first value in the operator array is one of the following, trigger a function
       case '+'://triggers on plus symbol
         add_numbers();//calls add numbers function
         break;
