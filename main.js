@@ -58,15 +58,18 @@ returns: N/A
 
 var display_array =[];
 var display_index = 0;
+var for_display ='';
 
-function cycle_arrays() {
+function create_display() {
   console.log("operator index" , operator_index);
   console.log("number_index", number_index);
   display_array[display_index] = number_array[number_index-1];
   display_array[display_index + 1] = operator_array[operator_index-1];
   display_index = display_index +2;
-  console.log(display_index);
-  console.log(display_array);
+  for(var x = 0; x < display_array.length; x++) {
+    for_display = for_display + display_array[x];
+    $('#input-box').val(for_display);
+  }
 }
 
 //This function helps simplify the code for each of the operator buttons so we can avoid bugs. It is called in each of anonymous click
@@ -79,7 +82,7 @@ function operator_helper() {
   number_index++;
   operator_index++;
   number_array[number_index] = '';
-  cycle_arrays();
+  create_display();
   if (operator_index >= 2) { //basically if we have hit number buttons more than once
     switch(operator_array[operator_index - 2]) {//If the first value in the operator array is one of the following, trigger a function
       case '+'://triggers on plus symbol
@@ -214,6 +217,9 @@ function clear_data() {
   operator_array = [];
   operator_index = 0;
   operator = '';
+  display_array = [];
+  display_index = 0;
+  for_display = '';
 }
 
 
