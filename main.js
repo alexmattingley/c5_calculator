@@ -235,10 +235,20 @@ function create_calc_array() {
   }
   console.log(calculate_array);
   final_number = 0;
-  for(var j = 0; j < calculate_array.length; j++){
-    final_number = final_number + calculate_array[j];
-    console.log(final_number);
-  }
+  switch(calculate_array[1]) {//beginning of switch
+      case '+'://triggers on plus symbol
+        add_numbers();//calls add numbers function
+        break;
+      case '-'://triggers on minus symbol
+        sub_numbers();//calls subtract function
+        break;
+      case '*'://triggers on multiply
+        mul_numbers();//calls multiply function
+        break;
+      case '/'://triggers on divide
+        div_numbers();//calls divide function
+        break;
+    }
 }
 
 /********************
