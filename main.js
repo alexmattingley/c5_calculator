@@ -90,22 +90,6 @@ function operator_helper() {
   operator_index++;
   number_array[number_index] = '';
   create_display();
-  if (operator_index >= 2) { //basically if we have hit number buttons more than once
-    switch(operator_array[operator_index - 2]) {//If the first value in the operator array is one of the following, trigger a function
-      case '+'://triggers on plus symbol
-        add_numbers();//calls add numbers function
-        break;
-      case '-'://triggers on minus symbol
-        sub_numbers();//calls subtract function
-        break;
-      case '*'://triggers on multiply
-        mul_numbers();//calls multiply function
-        break;
-      case '/'://triggers on divide
-        div_numbers();//calls divide function
-        break;
-    };
-  };
 }
 
 
