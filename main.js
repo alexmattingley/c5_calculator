@@ -59,7 +59,6 @@ returns: N/A
 var display_array =[];
 var display_index = 0;
 var for_display ='';
-var final_expression = '';
 
 function create_display() {
   console.log("operator index" , operator_index);
@@ -135,26 +134,26 @@ returns: N/A
 
 
 //creation of add_numbers function
-function add_numbers(){
- final_number = parseFloat(number_array[0]) + parseFloat(number_array[1]);
+function add_numbers(relevant_array){
+ final_number = relevant_array[0] + relevant_array[2];
 }
 // creation of sub_numbers function
-function sub_numbers(){
-  final_number = parseFloat(number_array[0]) - parseFloat(number_array[1]);
+function sub_numbers(relevant_array){
+  final_number = relevant_array[0] - relevant_array[2];
 }
 //creation of mul_numbers function
-function mul_numbers(){
-  final_number = parseFloat(number_array[0]) * parseFloat(number_array[1]);
+function mul_numbers(relevant_array){
+  final_number = relevant_array[0] * relevant_array[2];
 };
 //creation of div_numbers function
-function div_numbers(){
-  //this if statement is to prevent a divide by 0
-  if (number_array[1] == 0){
+function div_numbers(relevant_array){
+  //this if statement is to prevent a divide b
+  if(relevant_array[2]== 0){
       $('#input-box').val("undefined");
   }
   
   else {
-    final_number = parseFloat(number_array[0]) / parseFloat(number_array[1]);
+    final_number = relevant_array[0] / relevant_array[2];
   }
 
 };
@@ -173,21 +172,6 @@ returns: N/A
 ********************/
 
 function calculate() {//define calculate function
-  //switch(operator) {//beginning of switch
-  //  case '+'://triggers on plus symbol
-  //    add_numbers();//calls add numbers function
-  //    break;
-  //  case '-'://triggers on minus symbol
-  //    sub_numbers();//calls subtract function
-  //    break;
-  //  case '*'://triggers on multiply
-  //    mul_numbers();//calls multiply function
-  //    break;
-  //  case '/'://triggers on divide
-  //    div_numbers();//calls divide function
-  //    break;
-  //}
-  //$('#input-box').val(final_number);
   refresh_boolean = true;//allows someone to but new number into opperand_array and the display
   clear_data();//clears the values from opperand array. see clear_data function below.
 }
@@ -218,8 +202,45 @@ function create_calc_array() {
     }
   }
   console.log(calculate_array);
-  final_number = 0;
+  switch(calculate_array[1]) {//beginning of switch
+    case '+'://triggers on plus symbol
+      add_numbers(calculate_array);//calls add numbers function
+      break;
+    case '-'://triggers on minus symbol
+      sub_numbers(calculate_array);//calls subtract function
+      break;
+    case '*'://triggers on multiply
+      mul_numbers(calculate_array);//calls multiply function
+      break;
+    case '/'://triggers on divide
+      div_numbers(calculate_array);//calls divide function
+      break;
+  }
+  console.log(final_number);
+  if(calculate_array.length > 3) {
+    calculate_array[0] = final_number;
+    calculate_array[1] = calculate_array[3];
+    calculate_array[2] = calculate_array[4];
+    calculate_array.splice(3,2);
+    console.log(calculate_array);
+  }
 }
+
+//switch(operator) {//beginning of switch
+//  case '+'://triggers on plus symbol
+//    add_numbers();//calls add numbers function
+//    break;
+//  case '-'://triggers on minus symbol
+//    sub_numbers();//calls subtract function
+//    break;
+//  case '*'://triggers on multiply
+//    mul_numbers();//calls multiply function
+//    break;
+//  case '/'://triggers on divide
+//    div_numbers();//calls divide function
+//    break;
+//}
+//$('#input-box').val(final_number);
 
 /********************
 Function name(s): clear data
