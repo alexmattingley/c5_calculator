@@ -239,22 +239,6 @@ function create_calc_array() {
   }
 }
 
-//switch(operator) {//beginning of switch
-//  case '+'://triggers on plus symbol
-//    add_numbers();//calls add numbers function
-//    break;
-//  case '-'://triggers on minus symbol
-//    sub_numbers();//calls subtract function
-//    break;
-//  case '*'://triggers on multiply
-//    mul_numbers();//calls multiply function
-//    break;
-//  case '/'://triggers on divide
-//    div_numbers();//calls divide function
-//    break;
-//}
-//$('#input-box').val(final_number);
-
 /********************
 Function name(s): clear data
 Purpose: This function clears the number_array values but NOT the display value
