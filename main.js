@@ -189,24 +189,47 @@ returns: N/A
 ********************/
 
 function calculate() {//define calculate function
-
-  switch(operator) {//beginning of switch
-    case '+'://triggers on plus symbol
-      add_numbers();//calls add numbers function
-      break;
-    case '-'://triggers on minus symbol
-      sub_numbers();//calls subtract function
-      break;
-    case '*'://triggers on multiply
-      mul_numbers();//calls multiply function
-      break;
-    case '/'://triggers on divide
-      div_numbers();//calls divide function
-      break;
-  }
-  $('#input-box').val(final_number);
+  //switch(operator) {//beginning of switch
+  //  case '+'://triggers on plus symbol
+  //    add_numbers();//calls add numbers function
+  //    break;
+  //  case '-'://triggers on minus symbol
+  //    sub_numbers();//calls subtract function
+  //    break;
+  //  case '*'://triggers on multiply
+  //    mul_numbers();//calls multiply function
+  //    break;
+  //  case '/'://triggers on divide
+  //    div_numbers();//calls divide function
+  //    break;
+  //}
+  //$('#input-box').val(final_number);
   refresh_boolean = true;//allows someone to but new number into opperand_array and the display
   clear_data();//clears the values from opperand array. see clear_data function below.
+}
+
+var calculate_array = [];
+var calculate_array_index = 0;
+calculate_array[calculate_array_index] = '';
+
+function another_calc() {
+  var current_string = $('#input-box').val();
+  for(var x = 0; x < current_string.length; x++){
+    if(current_string[x] != '+' && current_string[x] != '-' && current_string[x] != '*' && current_string[x] != '/'){
+      calculate_array[calculate_array_index] = calculate_array[calculate_array_index] + current_string[x];
+    }else {
+      calculate_array_index++;
+      calculate_array[calculate_array_index] = '';
+      calculate_array[calculate_array_index] = calculate_array[calculate_array_index]+ current_string[x];
+      calculate_array_index++;
+    }
+    //if its not a symbol, put it into the array,
+    //    as soon as you hit a symbol then +1 the index, and put the next new_value
+    //into the array. then plus one again and do it again until you reach the next symbol.
+
+  }
+  console.log(current_string);
+  console.log(calculate_array);
 }
 
 /********************
@@ -297,6 +320,7 @@ $(document).ready(function(){
   });
 
   $('#equal_button').click(function(){
+    another_calc();
     calculate();
   });
 
