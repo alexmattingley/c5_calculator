@@ -132,18 +132,26 @@ Globals: final_number, number_array
 returns: N/A
 ********************/
 
+function operation_helper(relevant_array){
+  relevant_array[0] = final_number;
+  relevant_array.splice(1,2);
+}
+
 
 //creation of add_numbers function
 function add_numbers(relevant_array){
  final_number = relevant_array[0] + relevant_array[2];
+  operation_helper(relevant_array);
 }
 // creation of sub_numbers function
 function sub_numbers(relevant_array){
   final_number = relevant_array[0] - relevant_array[2];
+  operation_helper(relevant_array);
 }
 //creation of mul_numbers function
 function mul_numbers(relevant_array){
   final_number = relevant_array[0] * relevant_array[2];
+  operation_helper(relevant_array);
 };
 //creation of div_numbers function
 function div_numbers(relevant_array){
@@ -154,6 +162,7 @@ function div_numbers(relevant_array){
   
   else {
     final_number = relevant_array[0] / relevant_array[2];
+    operation_helper(relevant_array);
   }
 
 };
@@ -218,11 +227,26 @@ function create_calc_array() {
   }
   console.log(final_number);
   if(calculate_array.length > 3) {
-    calculate_array[0] = final_number;
-    calculate_array[1] = calculate_array[3];
-    calculate_array[2] = calculate_array[4];
-    calculate_array.splice(3,2);
     console.log(calculate_array);
+    for(var x = 0; x < calculate_array.length-1; x++){
+      //run function on first two numbers here.
+      switch(calculate_array[1]) {//beginning of switch
+        case '+'://triggers on plus symbol
+          add_numbers(calculate_array);
+          break;
+        case '-'://triggers on minus symbol
+          sub_numbers(calculate_array);//calls subtract function
+          break;
+        case '*'://triggers on multiply
+          mul_numbers(calculate_array);//calls multiply function
+          break;
+        case '/'://triggers on divide
+          div_numbers(calculate_array);//calls divide function
+          break;
+      }
+     console.log(calculate_array);
+     console.log(final_number);
+    }
   }
 }
 
