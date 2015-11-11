@@ -210,11 +210,13 @@ function calculate() {//define calculate function
 
 var calculate_array = [];
 var calculate_array_index = 0;
-calculate_array[calculate_array_index] = '';
 
 function another_calc() {
   var current_string = $('#input-box').val();
   for(var x = 0; x < current_string.length; x++){
+    if (calculate_array[calculate_array_index] == undefined){
+      calculate_array[calculate_array_index] = '';
+    }
     if(current_string[x] != '+' && current_string[x] != '-' && current_string[x] != '*' && current_string[x] != '/'){
       calculate_array[calculate_array_index] = calculate_array[calculate_array_index] + current_string[x];
     }else {
