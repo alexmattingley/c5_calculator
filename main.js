@@ -211,7 +211,7 @@ function calculate() {//define calculate function
 var calculate_array = [];
 var calculate_array_index = 0;
 
-function another_calc() {
+function create_calc_array() {
   var current_string = $('#input-box').val();
   for(var x = 0; x < current_string.length; x++){
     if (calculate_array[calculate_array_index] == undefined){
@@ -225,13 +225,20 @@ function another_calc() {
       calculate_array[calculate_array_index] = calculate_array[calculate_array_index]+ current_string[x];
       calculate_array_index++;
     }
-    //if its not a symbol, put it into the array,
-    //    as soon as you hit a symbol then +1 the index, and put the next new_value
-    //into the array. then plus one again and do it again until you reach the next symbol.
 
   }
   console.log(current_string);
+  for(var y = 0; y < calculate_array.length; y++){
+    if(calculate_array[y] != '+' && calculate_array[y] != '-' && calculate_array[y] != '*' && calculate_array[y] != '/'){
+      calculate_array[y] = parseFloat(calculate_array[y]);
+    }
+  }
   console.log(calculate_array);
+  final_number = 0;
+  for(var j = 0; j < calculate_array.length; j++){
+    final_number = final_number + calculate_array[j];
+    console.log(final_number);
+  }
 }
 
 /********************
@@ -322,7 +329,7 @@ $(document).ready(function(){
   });
 
   $('#equal_button').click(function(){
-    another_calc();
+    create_calc_array();
     calculate();
   });
 
