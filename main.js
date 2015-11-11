@@ -211,39 +211,28 @@ function create_calc_array() {
     }
   }
   console.log(calculate_array);
-  switch(calculate_array[1]) {//beginning of switch
-    case '+'://triggers on plus symbol
-      add_numbers(calculate_array);//calls add numbers function
-      break;
-    case '-'://triggers on minus symbol
-      sub_numbers(calculate_array);//calls subtract function
-      break;
-    case '*'://triggers on multiply
-      mul_numbers(calculate_array);//calls multiply function
-      break;
-    case '/'://triggers on divide
-      div_numbers(calculate_array);//calls divide function
-      break;
+  function operator_switch() {
+    switch(calculate_array[1]) {//beginning of switch
+      case '+'://triggers on plus symbol
+        add_numbers(calculate_array);//calls add numbers function
+        break;
+      case '-'://triggers on minus symbol
+        sub_numbers(calculate_array);//calls subtract function
+        break;
+      case '*'://triggers on multiply
+        mul_numbers(calculate_array);//calls multiply function
+        break;
+      case '/'://triggers on divide
+        div_numbers(calculate_array);//calls divide function
+        break;
+    }
+    $('#input-box').val(final_number);
   }
-  console.log(final_number);
+  operator_switch();
   if(calculate_array.length > 3) {
     console.log(calculate_array);
     for(var x = 0; x < calculate_array.length-1; x++){
-      //run function on first two numbers here.
-      switch(calculate_array[1]) {//beginning of switch
-        case '+'://triggers on plus symbol
-          add_numbers(calculate_array);
-          break;
-        case '-'://triggers on minus symbol
-          sub_numbers(calculate_array);//calls subtract function
-          break;
-        case '*'://triggers on multiply
-          mul_numbers(calculate_array);//calls multiply function
-          break;
-        case '/'://triggers on divide
-          div_numbers(calculate_array);//calls divide function
-          break;
-      }
+     operator_switch();
      console.log(calculate_array);
      console.log(final_number);
     }
