@@ -137,11 +137,31 @@ function operation_helper(relevant_array){
   relevant_array.splice(1,2);
 }
 
+function operator_switch(relevant_array) {
+  switch(relevant_array[1]) {//beginning of switch
+    case '+'://triggers on plus symbol
+      add_numbers(relevant_array);//calls add numbers function
+      break;
+    case '-'://triggers on minus symbol
+      sub_numbers(relevant_array);//calls subtract function
+      break;
+    case '*'://triggers on multiply
+      mul_numbers(relevant_array);//calls multiply function
+      break;
+    case '/'://triggers on divide
+      div_numbers(relevant_array);//calls divide function
+      break;
+  }
+  $('#input-box').val(final_number);
+}
+
 
 //creation of add_numbers function
 function add_numbers(relevant_array){
- final_number = relevant_array[0] + relevant_array[2];
-  operation_helper(relevant_array);
+  if(!isNaN(relevant_array[0])){
+    final_number = relevant_array[0] + relevant_array[2];
+    operation_helper(relevant_array);
+  }
 }
 // creation of sub_numbers function
 function sub_numbers(relevant_array){
@@ -211,28 +231,28 @@ function create_calc_array() {
     }
   }
   console.log(calculate_array);
-  function operator_switch() {
-    switch(calculate_array[1]) {//beginning of switch
-      case '+'://triggers on plus symbol
-        add_numbers(calculate_array);//calls add numbers function
-        break;
-      case '-'://triggers on minus symbol
-        sub_numbers(calculate_array);//calls subtract function
-        break;
-      case '*'://triggers on multiply
-        mul_numbers(calculate_array);//calls multiply function
-        break;
-      case '/'://triggers on divide
-        div_numbers(calculate_array);//calls divide function
-        break;
+
+  var final_array = [];
+
+  function sort_by_operator() {
+    for(var j = 0; j < calculate_array.length; j++) {
+      if(calculate_array[j] == '*' || calculate_array[j] == '/'){
+        final_array[0] = calculate_array[j-2];
+        final_array[1] = calculate_array[j-1];
+        final_array[2] = calculate_array[j];
+        final_array[3] = calculate_array[j+1];
+      }
     }
-    $('#input-box').val(final_number);
+    console.log('final_array' , final_array);
   }
-  operator_switch();
+
+  sort_by_operator();
+
+  operator_switch(calculate_array);
   if(calculate_array.length > 3) {
     console.log(calculate_array);
     for(var x = 0; x < calculate_array.length-1; x++){
-     operator_switch();
+     operator_switch(calculate_array);
      console.log(calculate_array);
      console.log(final_number);
     }
