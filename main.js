@@ -235,11 +235,11 @@ function create_calc_array() {
   var final_array = [];
 
   function sort_by_operator() {
-    for(var j = 0; j < calculate_array.length; j++) {
+    var initial_calc_array_length = calculate_array.length;
+    for(var j = 0; j < initial_calc_array_length; j++) {
       if(calculate_array[j] == '*' || calculate_array[j] == '/'){
-        console.log('j-2:' , j-2);
+        var j_2 = j-2;
         calculate_array.unshift(calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
-        calculate_array.splice(j-2,3);
       }
     }
     console.log(calculate_array);
