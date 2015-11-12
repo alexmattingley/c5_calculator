@@ -250,14 +250,15 @@ function create_calc_array() {
 
   sort_by_operator();
 
-  operator_switch(calculate_array);
   if(calculate_array.length > 3) {
     console.log(calculate_array);
     for(var x = 0; x < calculate_array.length-1; x++){
      operator_switch(calculate_array);
      console.log(calculate_array);
-     console.log(final_number);
+     console.log('final_number' , final_number);
     }
+  }else {
+    operator_switch(calculate_array);
   }
 }
 
