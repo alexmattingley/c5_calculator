@@ -237,13 +237,12 @@ function create_calc_array() {
   function sort_by_operator() {
     for(var j = 0; j < calculate_array.length; j++) {
       if(calculate_array[j] == '*' || calculate_array[j] == '/'){
-        final_array[0] = calculate_array[j-2];
-        final_array[1] = calculate_array[j-1];
-        final_array[2] = calculate_array[j];
-        final_array[3] = calculate_array[j+1];
+        console.log('j-2:' , j-2);
+        calculate_array.unshift(calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
+        calculate_array.splice(j-2,3);
       }
     }
-    console.log('final_array' , final_array);
+    console.log(calculate_array);
   }
 
   sort_by_operator();
