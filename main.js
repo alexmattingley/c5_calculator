@@ -133,6 +133,7 @@ returns: N/A
 ********************/
 
 function operation_helper(relevant_array){
+  console.log('youre in ophelper');
   relevant_array[0] = final_number;
   relevant_array.splice(1,2);
 }
@@ -141,12 +142,14 @@ function operator_switch(relevant_array) {
   switch(relevant_array[1]) {//beginning of switch
     case '+'://triggers on plus symbol
       add_numbers(relevant_array);//calls add numbers function
+      console.log('youre in opswitch');
       break;
     case '-'://triggers on minus symbol
       sub_numbers(relevant_array);//calls subtract function
       break;
     case '*'://triggers on multiply
       mul_numbers(relevant_array);//calls multiply function
+      console.log('youre in opswitch');
       break;
     case '/'://triggers on divide
       div_numbers(relevant_array);//calls divide function
@@ -230,7 +233,6 @@ function create_calc_array() {
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
-  console.log('calc array before sortby',calculate_array);
 
   function sort_by_operator() {
     if(calculate_array[0] >= 0 ){
@@ -241,21 +243,18 @@ function create_calc_array() {
     for(var j = 0; j < initial_calc_array_length; j++) {
       if(calculate_array[j] == '*' || calculate_array[j] == '/'){
         calculate_array.unshift(0,calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
-        console.log('calc array after second unshift', calculate_array);
         calculate_array.splice(j+3,4);
       }
     }
-    console.log('calc array after splice', calculate_array);
   }
 
   sort_by_operator();
 
-  if(calculate_array.length > 3) {
-    console.log(calculate_array);
-    for(var x = 0; x < calculate_array.length; x++){
+  if(calculate_array.length > 0) {
+    for(var x = 0; x < calculate_array.length+1; x++){
      operator_switch(calculate_array);
      console.log(calculate_array);
-     console.log('for loop for operations running' , final_number);
+     console.log('value of x' , x);
     }
   }else {
     operator_switch(calculate_array);
