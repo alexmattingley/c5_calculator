@@ -158,9 +158,9 @@ function operator_switch(relevant_array) {
 
 //creation of add_numbers function
 function add_numbers(relevant_array){
+  console.log('calcarray at 0 and 1', relevant_array[0], relevant_array[2]);
   final_number = relevant_array[0] + relevant_array[2];
   operation_helper(relevant_array);
-  console.log('op switch running');
 }
 // creation of sub_numbers function
 function sub_numbers(relevant_array){
@@ -169,9 +169,9 @@ function sub_numbers(relevant_array){
 }
 //creation of mul_numbers function
 function mul_numbers(relevant_array){
+  console.log('calcarray at 0 and 1', relevant_array[0], relevant_array[2]);
   final_number = relevant_array[0] * relevant_array[2];
   operation_helper(relevant_array);
-  console.log('op switch running');
 };
 //creation of div_numbers function
 function div_numbers(relevant_array){
@@ -252,10 +252,10 @@ function create_calc_array() {
 
   if(calculate_array.length > 3) {
     console.log(calculate_array);
-    for(var x = 0; x < calculate_array.length-1; x++){
+    for(var x = 0; x < calculate_array.length; x++){
      operator_switch(calculate_array);
      console.log(calculate_array);
-     console.log('im running!' , final_number);
+     console.log('for loop for operations running' , final_number);
     }
   }else {
     operator_switch(calculate_array);
