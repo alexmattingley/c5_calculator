@@ -58,7 +58,7 @@ returns: N/A
 
 var display_array =[];
 var display_index = 0;
-var for_display ='';
+var for_display = $('#input-box').val();
 
 function create_display() {
   console.log("operator index" , operator_index);
