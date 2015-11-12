@@ -230,19 +230,22 @@ function create_calc_array() {
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
-  console.log(calculate_array);
-
-  var final_array = [];
+  console.log('calc array before sortby',calculate_array);
 
   function sort_by_operator() {
+    if(calculate_array[0] >= 0 ){
+      calculate_array.unshift('+');
+    }
+    console.log('calc array after adding +', calculate_array);
     var initial_calc_array_length = calculate_array.length;
     for(var j = 0; j < initial_calc_array_length; j++) {
       if(calculate_array[j] == '*' || calculate_array[j] == '/'){
-        var j_2 = j-2;
-        calculate_array.unshift(calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
+        calculate_array.unshift(0,calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
+        console.log('calc array after second unshift', calculate_array);
+        calculate_array.splice(j+3,4);
       }
     }
-    console.log(calculate_array);
+    console.log('calc array after splice', calculate_array);
   }
 
   sort_by_operator();
