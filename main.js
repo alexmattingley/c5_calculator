@@ -205,7 +205,7 @@ var calculate_array = [];
 var calculate_array_index = 0;
 
 function create_calc_array() {
-  var current_string = $('#input-box').val();
+  //var current_string = $('#input-box').val();
   for(var x = 0; x < current_string.length; x++){
     if (calculate_array[calculate_array_index] == undefined){
       calculate_array[calculate_array_index] = '';
