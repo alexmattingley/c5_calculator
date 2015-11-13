@@ -60,7 +60,6 @@ function number_click(digit_value) {
   new_value= first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
   number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
-  console.log(number_array);
 }
 
 /********************
@@ -220,23 +219,21 @@ var calculate_array = [];
 var calculate_array_index;
 
 function create_calc_array() {
+  calculate_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
-    console.log(number_array[x]);
-    calculate_array_index = 0;
+    console.log(number_array);
     calculate_array[calculate_array_index] = '';
     calculate_array[calculate_array_index] = number_array[x];
     calculate_array_index = calculate_array_index+2;
-    console.log(calculate_array);
   }
 
+  calculate_array_index = 1;
   for(var z = 0; z < operator_array.length; z++){
-    calculate_array_index = 1;
     calculate_array[calculate_array_index] = '';
     calculate_array[calculate_array_index] = operator_array[z];
     calculate_array_index = calculate_array_index + 2;
   }
 
-  console.log(calculate_array);
   for(var y = 0; y < calculate_array.length; y++){
     if(calculate_array[y] != '+' && calculate_array[y] != '-' && calculate_array[y] != '*' && calculate_array[y] != '/'){
       calculate_array[y] = parseFloat(calculate_array[y]);
