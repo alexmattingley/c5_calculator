@@ -8,6 +8,7 @@ var number_array = [];
 number_array[number_index] = '';
 var result = null;
 var final_number;
+var operation_result;
 var new_value="";
 console.log(number_array);
 //operator variables and arrays
@@ -131,8 +132,8 @@ returns: N/A
 ********************/
 
 function operation_helper(relevant_array, first_number){
-  relevant_array.splice(first_number,3);
-  relevant_array[first_number] = final_number;
+  relevant_array.splice(first_number,2);
+  relevant_array[first_number] = operation_result;
 }
 
 function operator_switch(relevant_array, current_operator_index, first_number, second_number) {
@@ -150,23 +151,23 @@ function operator_switch(relevant_array, current_operator_index, first_number, s
       div_numbers(relevant_array, first_number, second_number);//calls divide function
       break;
   }
-  $('#input-box').val(final_number);
+  $input_box.val('come back to this');
 }
 
 
 //creation of add_numbers function
 function add_numbers(relevant_array, first_number, second_number){
-  final_number = relevant_array[first_number] + relevant_array[second_number];
+  operation_result = relevant_array[first_number] + relevant_array[second_number];
   operation_helper(relevant_array, first_number);
 }
 // creation of sub_numbers function
 function sub_numbers(relevant_array, first_number, second_number){
-  final_number = relevant_array[first_number] - relevant_array[second_number];
+  operation_result = relevant_array[first_number] - relevant_array[second_number];
   operation_helper(relevant_array, first_number);
 }
 //creation of mul_numbers function
 function mul_numbers(relevant_array, first_number, second_number){
-  final_number = relevant_array[first_number] * relevant_array[second_number];
+  operation_result = relevant_array[first_number] * relevant_array[second_number];
   operation_helper(relevant_array, first_number);
 };
 //creation of div_numbers function
@@ -177,7 +178,7 @@ function div_numbers(relevant_array, first_number, second_number){
   }
   
   else {
-    final_number = relevant_array[first_number] / relevant_array[second_number];
+    operation_result = relevant_array[first_number] / relevant_array[second_number];
     operation_helper(relevant_array, first_number);
   }
 
@@ -230,6 +231,7 @@ function create_calc_array() {
   for(var x = 0; x < calculate_array.length; x++){
     if(calculate_array[x] == '*' || calculate_array[x] == '/'){
       operator_switch(calculate_array, x, x-1,x+1);
+      x = x-1;
     }
   }
   console.log(calculate_array);
@@ -297,7 +299,7 @@ $('#c_button').click(function() {
   number_array[number_index] = '';
   operator_array = []; //clears out the operator array
   operator_index = 0; //sets the operator index back to zero.
-  $('#input-box').val(number_array[0] + operator + number_array[1]);
+  $input_box.val(number_array[0] + operator + number_array[1]);
 });
 
 
