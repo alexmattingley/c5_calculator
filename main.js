@@ -113,7 +113,7 @@ $("#mul_button").click(function(){
 //Activates on the press of the / button
 $("#div_button").click(function(){
   operator = "/";
-  operator_helper();
+  repeat_op_buttons();
 });
 
 
@@ -151,7 +151,6 @@ function operator_switch(relevant_array, current_operator_index, first_number, s
       div_numbers(relevant_array, first_number, second_number);//calls divide function
       break;
   }
-  $input_box.val('come back to this');
 }
 
 
@@ -241,7 +240,8 @@ function create_calc_array() {
       i = i-1;
     }
   }
-  console.log(calculate_array);
+  final_number = calculate_array[0];
+  $input_box.val(final_number);
 }
 
 /********************
