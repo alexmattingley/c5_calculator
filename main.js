@@ -6,16 +6,12 @@ Defining global variables
 var number_index = 0;
 var number_array = [];
 number_array[number_index] = '';
-var result = null;
 var final_number;
-var operation_result;
-var new_value="";
-console.log(number_array);
+
 //operator variables and arrays
-var operator = null;
+var operator;
 var operator_index = 0;
 var operator_array = [];
-console.log(operator_array);
 
 //input_variables
 
@@ -39,7 +35,7 @@ var refresh_boolean = false; //this for the reset after someone activates calcul
 
 function refresh_display() {
   console.log('refresh_display called');
-  $('#input-box').val(number_array[number_index]);
+  $input_box.val(number_array[number_index]);
 }
 
 /********************
@@ -49,7 +45,9 @@ Params: digit_value
 Globals: new_value, number_array, number_index, new_value
 returns: N/A
 ********************/
+
 function number_click(digit_value) {
+  var new_value = "";
   //This part of the function is only activated when the = symbol has been hit
   if (refresh_boolean) {
     refresh_display();
@@ -57,7 +55,7 @@ function number_click(digit_value) {
   }
 
   var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
-  new_value= first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
+  new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
   number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
 }
@@ -90,13 +88,8 @@ function create_display() {
 }
 
 
-
-//This function helps simplify the code for each of the operator buttons so we can avoid bugs. It is called in each of anonymous click
-//functions below.
 function repeat_op_buttons() {
   //remember that before any of this runs, you set an operator value in the anon functions
-  console.log('number index before +1', number_index);
-  console.log('operator index before +1', operator_index);
   operator_array[operator_index] = operator;
   number_index++;
   operator_index++;
@@ -145,6 +138,8 @@ Globals: final_number, number_array
 returns: N/A
 ********************/
 
+var operation_result;
+
 function operation_helper(relevant_array, first_number){
   relevant_array.splice(first_number,2);
   relevant_array[first_number] = operation_result;
@@ -187,7 +182,7 @@ function mul_numbers(relevant_array, first_number, second_number){
 function div_numbers(relevant_array, first_number, second_number){
   //this if statement is to prevent a divide b
   if(relevant_array[second_number]== 0){
-      $('#input-box').val("undefined");
+      $input_box.val("undefined");
   }
   
   else {
@@ -218,6 +213,9 @@ returns: N/A
 var calculate_array = [];
 
 function create_calc_array() {
+  if(number_array[0] == ''){
+    number_array[0] = '0';
+  }
   var calculate_array_index;
   calculate_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
@@ -256,6 +254,8 @@ function solve_equation() {
   }
   final_number = calculate_array[0];
   $input_box.val(final_number);
+  clear_data();
+  number_array[number_index] = final_number;
 }
 
 /********************
@@ -276,6 +276,7 @@ function clear_data() {
   display_array = [];
   display_index = 0;
   for_display = '';
+  calculate_array = [];
 }
 
 
@@ -305,9 +306,6 @@ returns: N/A
 
 $('#c_button').click(function() {
   number_array[number_index] = '';
-  operator_array = []; //clears out the operator array
-  operator_index = 0; //sets the operator index back to zero.
-  $input_box.val(number_array[0] + operator + number_array[1]);
 });
 
 
