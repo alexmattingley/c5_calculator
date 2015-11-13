@@ -79,12 +79,6 @@ function create_display() {
   display_index = display_index +2;
   for_display = for_display + display_array[display_array.length-2] + display_array[display_array.length-1];
   $input_box.val(for_display);
-  for(var x = 0; x < display_array.length; x++) {
-    if(display_array[x] != '+' && display_array[x] != '-' && display_array[x] != '*' && display_array[x] != '/'){
-      var string_as_number = parseFloat(display_array[x]);
-      display_array[x] = string_as_number;
-    }
-  }
 }
 
 
@@ -306,6 +300,7 @@ returns: N/A
 
 $('#c_button').click(function() {
   number_array[number_index] = '';
+
 });
 
 
