@@ -80,11 +80,9 @@ function create_display() {
 
 //This function helps simplify the code for each of the operator buttons so we can avoid bugs. It is called in each of anonymous click
 //functions below.
-function operator_helper() {
+function repeat_op_buttons() {
   //remember that before any of this runs, you set an operator value in the anon functions
   operator_array[operator_index] = operator;
-  console.log("number_array at index: ",number_array[number_index]);
-  console.log("operator_array[operator_index]", operator_array[operator_index]);
   number_index++;
   operator_index++;
   number_array[number_index] = '';
@@ -95,20 +93,20 @@ function operator_helper() {
 // Activates on the press of the + button
 $("#add_button").click(function(){
   operator = "+";//setting the operator to +
-  operator_helper(); //calling above function
+  repeat_op_buttons(); //calling above function
   
 });
 
 //Activates on the press of the - button
 $("#sub_button").click(function(){
   operator = "-";
-  operator_helper();
+  repeat_op_buttons();
 });
 
 //Activates on the press of the * button
 $("#mul_button").click(function(){
   operator = "*";
-  operator_helper();
+  repeat_op_buttons();
 });
 
 //Activates on the press of the / button
@@ -133,8 +131,8 @@ returns: N/A
 ********************/
 
 function operation_helper(relevant_array, first_number){
-  first_number = final_number;
-  relevant_array.splice(1,2);
+  relevant_array.splice(first_number,3);
+  relevant_array[first_number] = final_number;
 }
 
 function operator_switch(relevant_array, current_operator_index, first_number, second_number) {
@@ -164,15 +162,15 @@ function add_numbers(relevant_array, first_number, second_number){
 // creation of sub_numbers function
 function sub_numbers(relevant_array, first_number, second_number){
   final_number = relevant_array[first_number] - relevant_array[second_number];
-  operation_helper(relevant_array);
+  operation_helper(relevant_array, first_number);
 }
 //creation of mul_numbers function
 function mul_numbers(relevant_array, first_number, second_number){
   final_number = relevant_array[first_number] * relevant_array[second_number];
-  operation_helper(relevant_array);
+  operation_helper(relevant_array, first_number);
 };
 //creation of div_numbers function
-function div_numbers(relevant_array, first_number, second_number{
+function div_numbers(relevant_array, first_number, second_number){
   //this if statement is to prevent a divide b
   if(relevant_array[second_number]== 0){
       $('#input-box').val("undefined");
@@ -180,7 +178,7 @@ function div_numbers(relevant_array, first_number, second_number{
   
   else {
     final_number = relevant_array[first_number] / relevant_array[second_number];
-    operation_helper(relevant_array);
+    operation_helper(relevant_array, first_number);
   }
 
 };
@@ -230,11 +228,11 @@ function create_calc_array() {
   }
 
   for(var x = 0; x < calculate_array.length; x++){
-    if(x == '*' || x == '/'){
+    if(calculate_array[x] == '*' || calculate_array[x] == '/'){
       operator_switch(calculate_array, x, x-1,x+1);
     }
   }
-
+  console.log(calculate_array);
 }
 
 /********************
