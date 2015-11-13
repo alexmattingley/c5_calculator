@@ -216,17 +216,15 @@ returns: N/A
 //}
 
 var calculate_array = [];
-var calculate_array_index;
 
 function create_calc_array() {
+  var calculate_array_index;
   calculate_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
-    console.log(number_array);
     calculate_array[calculate_array_index] = '';
     calculate_array[calculate_array_index] = number_array[x];
     calculate_array_index = calculate_array_index+2;
   }
-
   calculate_array_index = 1;
   for(var z = 0; z < operator_array.length; z++){
     calculate_array[calculate_array_index] = '';
@@ -239,7 +237,10 @@ function create_calc_array() {
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
+}
 
+function solve_equation() {
+  create_calc_array();
   for(var j = 0; j < calculate_array.length; j++){
     if(calculate_array[j] == '*' || calculate_array[j] == '/'){
       operator_switch(calculate_array, j, j-1,j+1);
@@ -318,8 +319,7 @@ $(document).ready(function(){
   });
 
   $('#equal_button').click(function(){
-    create_calc_array();
-    //calculate();
+    solve_equation();
   });
 
 });
