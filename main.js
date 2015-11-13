@@ -228,10 +228,17 @@ function create_calc_array() {
     }
   }
 
-  for(var x = 0; x < calculate_array.length; x++){
-    if(calculate_array[x] == '*' || calculate_array[x] == '/'){
-      operator_switch(calculate_array, x, x-1,x+1);
-      x = x-1;
+  for(var j = 0; j < calculate_array.length; j++){
+    if(calculate_array[j] == '*' || calculate_array[j] == '/'){
+      operator_switch(calculate_array, j, j-1,j+1);
+      j = j-1;
+    }
+  }
+
+  for(var i = 0; i < calculate_array.length; i++){
+    if(calculate_array[i] == '+' || calculate_array[i] == '-'){
+      operator_switch(calculate_array, i, i-1, i+1);
+      i = i-1;
     }
   }
   console.log(calculate_array);
