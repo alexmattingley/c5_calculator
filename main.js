@@ -27,6 +27,21 @@ var $input_box = $('#input-box');
 
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
 
+
+
+/********************
+ Function name(s): refresh display
+ Purpose: This function clears the display values but NOT the number value
+ Params: N/A
+ Globals: number_array, number_index
+ returns: N/A
+ ********************/
+
+function refresh_display() {
+  console.log('refresh_display called');
+  $('#input-box').val(number_array[number_index]);
+}
+
 /********************
 Function name: number click()
 Purpose: activates on click of any of the number buttons
@@ -62,8 +77,6 @@ var display_index = 0;
 var for_display = $input_box.val();
 
 function create_display() {
-  console.log("operator index" , operator_index);
-  console.log("number_index", number_index);
   display_array[display_index] = number_array[number_index-1];
   display_array[display_index + 1] = operator_array[operator_index-1];
   display_index = display_index +2;
@@ -83,6 +96,8 @@ function create_display() {
 //functions below.
 function repeat_op_buttons() {
   //remember that before any of this runs, you set an operator value in the anon functions
+  console.log('number index before +1', number_index);
+  console.log('operator index before +1', operator_index);
   operator_array[operator_index] = operator;
   number_index++;
   operator_index++;
@@ -196,31 +211,32 @@ Globals: refresh_boolean, operator
 returns: N/A
 ********************/
 
-function calculate() {//define calculate function
-  refresh_boolean = true;//allows someone to but new number into opperand_array and the display
-  clear_data();//clears the values from opperand array. see clear_data function below.
-}
+//function calculate() {//define calculate function
+//  refresh_boolean = true;//allows someone to but new number into opperand_array and the display
+//  clear_data();//clears the values from opperand array. see clear_data function below.
+//}
 
 var calculate_array = [];
-var calculate_array_index = 0;
+var calculate_array_index;
 
 function create_calc_array() {
-  //var current_string = $('#input-box').val();
-  for(var x = 0; x < current_string.length; x++){
-    if (calculate_array[calculate_array_index] == undefined){
-      calculate_array[calculate_array_index] = '';
-    }
-    if(current_string[x] != '+' && current_string[x] != '-' && current_string[x] != '*' && current_string[x] != '/'){
-      calculate_array[calculate_array_index] = calculate_array[calculate_array_index] + current_string[x];
-    }else {
-      calculate_array_index++;
-      calculate_array[calculate_array_index] = '';
-      calculate_array[calculate_array_index] = calculate_array[calculate_array_index]+ current_string[x];
-      calculate_array_index++;
-    }
-
+  for(var x = 0; x < number_array.length; x++){
+    console.log(number_array[x]);
+    calculate_array_index = 0;
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = number_array[x];
+    calculate_array_index = calculate_array_index+2;
+    console.log(calculate_array);
   }
-  console.log(current_string);
+
+  for(var z = 0; z < operator_array.length; z++){
+    calculate_array_index = 1;
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = operator_array[z];
+    calculate_array_index = calculate_array_index + 2;
+  }
+
+  console.log(calculate_array);
   for(var y = 0; y < calculate_array.length; y++){
     if(calculate_array[y] != '+' && calculate_array[y] != '-' && calculate_array[y] != '*' && calculate_array[y] != '/'){
       calculate_array[y] = parseFloat(calculate_array[y]);
@@ -266,19 +282,6 @@ function clear_data() {
 
 
 /********************
-Function name(s): refresh display
-Purpose: This function clears the display values but NOT the number value
-Params: N/A
-Globals: number_array, number_index
-returns: N/A
-********************/
-
-function refresh_display() {
-  console.log('refresh_display called');
-  $('#input-box').val(number_array[number_index]);
-}
-
-/********************
 Function name(s): A/C button
 Purpose: This function is triggered on the click of ac_button and clears 
 both the display and the data
@@ -310,20 +313,6 @@ $('#c_button').click(function() {
 });
 
 
-/***************
-number_array['',''];
-index_pointer = 0
-input_array['4', '+', '3', '/', '16', '-', '3'];
-
-operator = '';
-for(var i = 0; i<input_array.length; i++) {
-  if(!isNaN(input_array[i])) //is it a number
-}
-
-input_array['11', '+', ''];
-in_pointer = 2
-*******************/
-
 $(document).ready(function(){
 
   $('.number-button').click(function(){
@@ -333,7 +322,7 @@ $(document).ready(function(){
 
   $('#equal_button').click(function(){
     create_calc_array();
-    calculate();
+    //calculate();
   });
 
 });
