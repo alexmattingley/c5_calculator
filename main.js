@@ -132,24 +132,24 @@ Globals: final_number, number_array
 returns: N/A
 ********************/
 
-function operation_helper(relevant_array){
-  relevant_array[0] = final_number;
+function operation_helper(relevant_array, first_number){
+  first_number = final_number;
   relevant_array.splice(1,2);
 }
 
-function operator_switch(relevant_array) {
-  switch(relevant_array[1]) {//beginning of switch
+function operator_switch(relevant_array, current_operator_index, first_number, second_number) {
+  switch(relevant_array[current_operator_index]) {//beginning of switch
     case '+'://triggers on plus symbol
-      add_numbers(relevant_array);//calls add numbers function
+      add_numbers(relevant_array, first_number, second_number);//calls add numbers function
       break;
     case '-'://triggers on minus symbol
-      sub_numbers(relevant_array);//calls subtract function
+      sub_numbers(relevant_array, first_number, second_number);//calls subtract function
       break;
     case '*'://triggers on multiply
-      mul_numbers(relevant_array);//calls multiply function
+      mul_numbers(relevant_array, first_number, second_number);//calls multiply function
       break;
     case '/'://triggers on divide
-      div_numbers(relevant_array);//calls divide function
+      div_numbers(relevant_array, first_number, second_number);//calls divide function
       break;
   }
   $('#input-box').val(final_number);
@@ -157,29 +157,29 @@ function operator_switch(relevant_array) {
 
 
 //creation of add_numbers function
-function add_numbers(relevant_array){
-  final_number = relevant_array[0] + relevant_array[2];
-  operation_helper(relevant_array);
+function add_numbers(relevant_array, first_number, second_number){
+  final_number = relevant_array[first_number] + relevant_array[second_number];
+  operation_helper(relevant_array, first_number);
 }
 // creation of sub_numbers function
-function sub_numbers(relevant_array){
-  final_number = relevant_array[0] - relevant_array[2];
+function sub_numbers(relevant_array, first_number, second_number){
+  final_number = relevant_array[first_number] - relevant_array[second_number];
   operation_helper(relevant_array);
 }
 //creation of mul_numbers function
-function mul_numbers(relevant_array){
-  final_number = relevant_array[0] * relevant_array[2];
+function mul_numbers(relevant_array, first_number, second_number){
+  final_number = relevant_array[first_number] * relevant_array[second_number];
   operation_helper(relevant_array);
 };
 //creation of div_numbers function
-function div_numbers(relevant_array){
+function div_numbers(relevant_array, first_number, second_number{
   //this if statement is to prevent a divide b
-  if(relevant_array[2]== 0){
+  if(relevant_array[second_number]== 0){
       $('#input-box').val("undefined");
   }
   
   else {
-    final_number = relevant_array[0] / relevant_array[2];
+    final_number = relevant_array[first_number] / relevant_array[second_number];
     operation_helper(relevant_array);
   }
 
@@ -229,13 +229,12 @@ function create_calc_array() {
     }
   }
 
-
-  if(calculate_array.length > 0) {
-    for(var x = 0; x < calculate_array.length+1; x++){
-     operator_switch(calculate_array);
-     console.log('solving calc array', calculate_array);
+  for(var x = 0; x < calculate_array.length; x++){
+    if(x == '*' || x == '/'){
+      operator_switch(calculate_array, x, x-1,x+1);
     }
   }
+
 }
 
 /********************
