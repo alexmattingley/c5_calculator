@@ -18,7 +18,7 @@ console.log(operator_array);
 
 //input_variables
 
-var input_array = [];
+var $input_box = $('#input-box');
 
 
 
@@ -40,9 +40,9 @@ function number_click(digit_value) {
     refresh_boolean = false;
   }
 
-  var first_digit_val = $('#input-box').val(); //this is taking the first digit clicked and assigning it to a variable
+  var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
   new_value= first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
-  $('#input-box').val(new_value);//this is taking that new value and putting it in the display
+  $input_box.val(new_value);//this is taking that new value and putting it in the display
   number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
   console.log(number_array);
 }
@@ -58,7 +58,7 @@ returns: N/A
 
 var display_array =[];
 var display_index = 0;
-var for_display = $('#input-box').val();
+var for_display = $input_box.val();
 
 function create_display() {
   console.log("operator index" , operator_index);
@@ -66,9 +66,9 @@ function create_display() {
   display_array[display_index] = number_array[number_index-1];
   display_array[display_index + 1] = operator_array[operator_index-1];
   display_index = display_index +2;
+  for_display = for_display + display_array[display_array.length-2] + display_array[display_array.length-1];
+  $input_box.val(for_display);
   for(var x = 0; x < display_array.length; x++) {
-    for_display = for_display + display_array[x];
-    $('#input-box').val(for_display);
     if(display_array[x] != '+' && display_array[x] != '-' && display_array[x] != '*' && display_array[x] != '/'){
       var string_as_number = parseFloat(display_array[x]);
       display_array[x] = string_as_number;
@@ -133,7 +133,6 @@ returns: N/A
 ********************/
 
 function operation_helper(relevant_array){
-  console.log('youre in ophelper');
   relevant_array[0] = final_number;
   relevant_array.splice(1,2);
 }
@@ -142,14 +141,12 @@ function operator_switch(relevant_array) {
   switch(relevant_array[1]) {//beginning of switch
     case '+'://triggers on plus symbol
       add_numbers(relevant_array);//calls add numbers function
-      console.log('youre in opswitch');
       break;
     case '-'://triggers on minus symbol
       sub_numbers(relevant_array);//calls subtract function
       break;
     case '*'://triggers on multiply
       mul_numbers(relevant_array);//calls multiply function
-      console.log('youre in opswitch');
       break;
     case '/'://triggers on divide
       div_numbers(relevant_array);//calls divide function
@@ -161,7 +158,6 @@ function operator_switch(relevant_array) {
 
 //creation of add_numbers function
 function add_numbers(relevant_array){
-  console.log('calcarray at 0 and 1', relevant_array[0], relevant_array[2]);
   final_number = relevant_array[0] + relevant_array[2];
   operation_helper(relevant_array);
 }
@@ -172,7 +168,6 @@ function sub_numbers(relevant_array){
 }
 //creation of mul_numbers function
 function mul_numbers(relevant_array){
-  console.log('calcarray at 0 and 1', relevant_array[0], relevant_array[2]);
   final_number = relevant_array[0] * relevant_array[2];
   operation_helper(relevant_array);
 };
@@ -243,6 +238,7 @@ function create_calc_array() {
     for(var j = 0; j < initial_calc_array_length; j++) {
       if(calculate_array[j] == '*' || calculate_array[j] == '/'){
         calculate_array.unshift(0,calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
+        console.log('calc array after unshift', calculate_array);
         calculate_array.splice(j+3,4);
       }
     }
@@ -253,8 +249,7 @@ function create_calc_array() {
   if(calculate_array.length > 0) {
     for(var x = 0; x < calculate_array.length+1; x++){
      operator_switch(calculate_array);
-     console.log(calculate_array);
-     console.log('value of x' , x);
+     console.log('solving calc array', calculate_array);
     }
   }else {
     operator_switch(calculate_array);
