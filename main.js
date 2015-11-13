@@ -229,30 +229,12 @@ function create_calc_array() {
     }
   }
 
-  function sort_by_operator() {
-    if(calculate_array[0] >= 0 ){
-      calculate_array.unshift('+');
-    }
-    console.log('calc array after adding +', calculate_array);
-    var initial_calc_array_length = calculate_array.length;
-    for(var j = 0; j < initial_calc_array_length; j++) {
-      if(calculate_array[j] == '*' || calculate_array[j] == '/'){
-        calculate_array.unshift(0,calculate_array[j-2], calculate_array[j-1], calculate_array[j], calculate_array[j+1]);
-        console.log('calc array after unshift', calculate_array);
-        calculate_array.splice(j+3,4);
-      }
-    }
-  }
-
-  sort_by_operator();
 
   if(calculate_array.length > 0) {
     for(var x = 0; x < calculate_array.length+1; x++){
      operator_switch(calculate_array);
      console.log('solving calc array', calculate_array);
     }
-  }else {
-    operator_switch(calculate_array);
   }
 }
 
