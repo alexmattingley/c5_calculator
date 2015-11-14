@@ -189,12 +189,11 @@ function mul_numbers(relevant_array, first_number, second_number){
 };
 //creation of div_numbers function
 function div_numbers(relevant_array, first_number, second_number){
-  //this if statement is to prevent a divide b
-  if(relevant_array[second_number]== 0){
+  console.log(relevant_array[second_number]);
+  if(relevant_array[second_number] == 0){
       $input_box.val("undefined");
-  }
-  
-  else {
+  }else {
+    console.log('div_numbs');
     operation_result = relevant_array[first_number] / relevant_array[second_number];
     operation_helper(relevant_array, first_number);
   }
