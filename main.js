@@ -72,14 +72,24 @@ returns: N/A
 ********************/
 
 var display_array =[];
-var display_index = 0;
-var for_display = $input_box.val();
 
 function create_display() {
-  display_array[display_index] = number_array[number_index-1];
-  display_array[display_index + 1] = operator_array[operator_index-1];
-  display_index = display_index +2;
-  for_display = for_display + display_array[display_array.length-2] + display_array[display_array.length-1];
+  var display_array_index = 0;
+  for(var x = 0; x < number_array.length; x++){
+    display_array[display_array_index] = '';
+    display_array[display_array_index] = number_array[x];
+    display_array_index = display_array_index+2;
+  }
+  display_array_index = 1;
+  for(var z = 0; z < operator_array.length; z++){
+    display_array[display_array_index] = '';
+    display_array[display_array_index] = operator_array[z];
+    display_array_index = display_array_index + 2;
+  }
+  for_display = '';
+  for(var y = 0; y < display_array.length; y++){
+    for_display = for_display + display_array[y];
+  }
   $input_box.val(for_display);
 }
 
