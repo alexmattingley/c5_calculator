@@ -22,6 +22,7 @@ var $input_box = $('#input-box');
 //refresh variables 
 
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
+var clear_bolean = false;
 
 
 
@@ -54,6 +55,7 @@ function number_click(digit_value) {
     refresh_boolean = false;
   }
 
+  clear_bolean = false;
   var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
   new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
@@ -85,6 +87,7 @@ function create_display() {
 function repeat_op_buttons() {
   //remember that before any of this runs, you set an operator value in the anon functions
   operator_array[operator_index] = operator;
+  clear_bolean = true;
   number_index++;
   operator_index++;
   number_array[number_index] = '';
@@ -299,8 +302,13 @@ returns: N/A
 ********************/
 
 $('#c_button').click(function() {
-  number_array[number_index] = '';
-
+  if(!clear_bolean){
+    number_array[number_index] = '';
+    $input_box.val(for_display);
+  }else {
+   operator_index--;
+   operator_array[operator_index] = '';
+  }
 });
 
 
