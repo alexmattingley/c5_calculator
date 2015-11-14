@@ -72,8 +72,10 @@ returns: N/A
 ********************/
 
 var display_array =[];
+var for_display;
 
 function create_display() {
+  display_array = [];
   var display_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
     display_array[display_array_index] = '';
@@ -314,10 +316,12 @@ returns: N/A
 $('#c_button').click(function() {
   if(!clear_bolean){
     number_array[number_index] = '';
-    $input_box.val(for_display);
+    create_display();
+    clear_bolean = true;
   }else {
    operator_index--;
    operator_array[operator_index] = '';
+   create_display();
   }
 });
 
