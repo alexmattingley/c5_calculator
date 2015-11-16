@@ -148,6 +148,7 @@ returns: N/A
 ********************/
 
 var operation_result;
+var divide_by_zero_bolean = false;
 
 function operation_helper(relevant_array, first_number){
   relevant_array.splice(first_number,2);
@@ -191,7 +192,10 @@ function mul_numbers(relevant_array, first_number, second_number){
 function div_numbers(relevant_array, first_number, second_number){
   console.log(relevant_array[second_number]);
   if(relevant_array[second_number] == 0){
+      operation_result = "undefined";
       $input_box.val("undefined");
+      operation_helper(relevant_array, first_number);
+      divide_by_zero_bolean = true;
   }else {
     console.log('div_numbs');
     operation_result = relevant_array[first_number] / relevant_array[second_number];
