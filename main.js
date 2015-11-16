@@ -57,6 +57,10 @@ function number_click(digit_value) {
 
   clear_bolean = false;
   var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
+  if (first_digit_val == 'undefined'){
+    first_digit_val = '';
+    number_array[number_index] = '';
+  }
   new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
   number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
@@ -148,7 +152,6 @@ returns: N/A
 ********************/
 
 var operation_result;
-var divide_by_zero_bolean = false;
 
 function operation_helper(relevant_array, first_number){
   relevant_array.splice(first_number,2);
@@ -195,7 +198,6 @@ function div_numbers(relevant_array, first_number, second_number){
       operation_result = "undefined";
       $input_box.val("undefined");
       operation_helper(relevant_array, first_number);
-      divide_by_zero_bolean = true;
   }else {
     console.log('div_numbs');
     operation_result = relevant_array[first_number] / relevant_array[second_number];
