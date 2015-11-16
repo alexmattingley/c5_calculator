@@ -57,9 +57,11 @@ function number_click(digit_value) {
 
   clear_bolean = false;
   var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
-  if (first_digit_val == 'undefined'){
+  if (divide_zero_bolean){
+    console.log('divide by zero bolean' , divide_zero_bolean);
     first_digit_val = '';
-    number_array[number_index] = '';
+    clear_data();
+    divide_zero_bolean = false;
   }
   new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
@@ -152,6 +154,7 @@ returns: N/A
 ********************/
 
 var operation_result;
+var divide_zero_bolean = false;
 
 function operation_helper(relevant_array, first_number){
   relevant_array.splice(first_number,2);
@@ -195,9 +198,12 @@ function mul_numbers(relevant_array, first_number, second_number){
 function div_numbers(relevant_array, first_number, second_number){
   console.log(relevant_array[second_number]);
   if(relevant_array[second_number] == 0){
-      operation_result = "undefined";
-      $input_box.val("undefined");
-      operation_helper(relevant_array, first_number);
+    operation_result = "undefined";
+    operation_helper(relevant_array, first_number);
+    $input_box.val("");
+    $input_box.val('undefined');
+    divide_zero_bolean = true;
+
   }else {
     console.log('div_numbs');
     operation_result = relevant_array[first_number] / relevant_array[second_number];
