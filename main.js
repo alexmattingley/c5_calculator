@@ -48,7 +48,6 @@ returns: N/A
 ********************/
 
 function number_click(digit_value) {
-  var new_value = "";
   //This part of the function is only activated when the = symbol has been hit
   if (refresh_boolean) {
     refresh_display();
@@ -63,7 +62,7 @@ function number_click(digit_value) {
     clear_data();
     divide_zero_bolean = false;
   }
-  new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
+  var new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
   number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
 }
@@ -156,61 +155,61 @@ returns: N/A
 var operation_result;
 var divide_zero_bolean = false;
 
-function operation_helper(relevant_array, first_number){
-  relevant_array.splice(first_number,2);
-  relevant_array[first_number] = operation_result;
+function operation_helper(relevant_array, first_number_index){
+  relevant_array.splice(first_number_index,2);
+  relevant_array[first_number_index] = operation_result;
 }
-
-function operator_switch(relevant_array, current_operator_index, first_number, second_number) {
-  switch(relevant_array[current_operator_index]) {//beginning of switch
-    case '+'://triggers on plus symbol
-      add_numbers(relevant_array, first_number, second_number);//calls add numbers function
-      break;
-    case '-'://triggers on minus symbol
-      sub_numbers(relevant_array, first_number, second_number);//calls subtract function
-      break;
-    case '*'://triggers on multiply
-      mul_numbers(relevant_array, first_number, second_number);//calls multiply function
-      break;
-    case '/'://triggers on divide
-      div_numbers(relevant_array, first_number, second_number);//calls divide function
-      break;
-  }
-}
-
 
 //creation of add_numbers function
-function add_numbers(relevant_array, first_number, second_number){
-  operation_result = relevant_array[first_number] + relevant_array[second_number];
-  operation_helper(relevant_array, first_number);
+function add_numbers(relevant_array, first_number_index, second_number_index){
+  operation_result = relevant_array[first_number_index] + relevant_array[second_number_index];
+  operation_helper(relevant_array, first_number_index);
 }
 // creation of sub_numbers function
-function sub_numbers(relevant_array, first_number, second_number){
-  operation_result = relevant_array[first_number] - relevant_array[second_number];
-  operation_helper(relevant_array, first_number);
+function sub_numbers(relevant_array, first_number_index, second_number_index){
+  operation_result = relevant_array[first_number_index] - relevant_array[second_number_index];
+  operation_helper(relevant_array, first_number_index);
 }
 //creation of mul_numbers function
-function mul_numbers(relevant_array, first_number, second_number){
-  operation_result = relevant_array[first_number] * relevant_array[second_number];
-  operation_helper(relevant_array, first_number);
-};
+function mul_numbers(relevant_array, first_number_index, second_number_index){
+  operation_result = relevant_array[first_number_index] * relevant_array[second_number_index];
+  operation_helper(relevant_array, first_number_index);
+}
 //creation of div_numbers function
-function div_numbers(relevant_array, first_number, second_number){
-  console.log(relevant_array[second_number]);
-  if(relevant_array[second_number] == 0){
+function div_numbers(relevant_array, first_number_index, second_number_index){
+  console.log(relevant_array[second_number_index]);
+  if(relevant_array[second_number_index] == 0){
     operation_result = "undefined";
-    operation_helper(relevant_array, first_number);
+    operation_helper(relevant_array, first_number_index);
     console.log('op result' , operation_result);
     console.log('num array' , number_array);
     divide_zero_bolean = true;
 
   }else {
     console.log('div_numbs');
-    operation_result = relevant_array[first_number] / relevant_array[second_number];
-    operation_helper(relevant_array, first_number);
+    operation_result = relevant_array[first_number_index] / relevant_array[second_number_index];
+    operation_helper(relevant_array, first_number_index);
   }
 
-};
+}
+
+function operator_switch(relevant_array, current_operator_index, first_number_index, second_number_index) {
+  switch(relevant_array[current_operator_index]) {//beginning of switch
+    case '+'://triggers on plus symbol
+      add_numbers(relevant_array, first_number_index, second_number_index);//calls add numbers function
+      break;
+    case '-'://triggers on minus symbol
+      sub_numbers(relevant_array, first_number_index, second_number_index);//calls subtract function
+      break;
+    case '*'://triggers on multiply
+      mul_numbers(relevant_array, first_number_index, second_number_index);//calls multiply function
+      break;
+    case '/'://triggers on divide
+      div_numbers(relevant_array, first_number_index, second_number_index);//calls divide function
+      break;
+  }
+}
+
 
 /*************************
 ****End of operator action functions
