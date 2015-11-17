@@ -274,7 +274,6 @@ function solve_equation() {
   }
   if(divide_zero_bolean){
     calculate_array[0] = 'undefined';
-    divide_zero_bolean = false;
   }
   final_number = calculate_array[0];
   $input_box.val(final_number);
