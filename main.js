@@ -200,8 +200,8 @@ function div_numbers(relevant_array, first_number, second_number){
   if(relevant_array[second_number] == 0){
     operation_result = "undefined";
     operation_helper(relevant_array, first_number);
-    $input_box.val("");
-    $input_box.val('undefined');
+    console.log('op result' , operation_result);
+    console.log('num array' , number_array);
     divide_zero_bolean = true;
 
   }else {
@@ -271,6 +271,10 @@ function solve_equation() {
       operator_switch(calculate_array, i, i-1, i+1);
       i = i-1;
     }
+  }
+  if(divide_zero_bolean){
+    calculate_array[0] = 'undefined';
+    divide_zero_bolean = false;
   }
   final_number = calculate_array[0];
   $input_box.val(final_number);
