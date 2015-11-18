@@ -1,16 +1,19 @@
 .background-0 {
 	background: url('photos/IMG_4213.jpg') no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 
 .background-1 {
 	background: url('photos/IMG_4216.jpg') no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 
 .background-2 {
 	background: url('photos/IMG_4217.jpg') no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 
 .background-3 {
@@ -20,22 +23,22 @@
 
 body {
 	height: 100vh;
+	padding: 0px 15px;
 }
 
 
 input.output-area {
-	background: white;
-	border: 1px black solid;
+	background: transparent;
+	border: none;
+	border-bottom: 2px black solid;
 	width: 100%;
 	box-sizing: border-box;
-	margin-bottom: 5px;
-
+	font-size: 35px;
 }
 
 .calculator-container {
-	width: 90%;
+	max-width: 100%;
 	max-width: 400px;
-	padding: 20px;
 	margin: 100px auto;
 	border: 2px black solid;
 
@@ -43,37 +46,46 @@ input.output-area {
 
 .calculator-container .output-area {
 	padding: 20px 5px;
-	border: 1px black solid;
 	text-align: right;
 }
-.number-bay .number-button {
+.number-bay .number-button, .number-bay .operator-button {
 	display: inline-block;
-	border: 1px black solid;
-	width: 32%;
-	padding: 13.5% 0px;
+	padding: 9% 0;
+	width: 31.9%;
 	text-align: center;
+}
 
+.number-bay .bottom-row {
+	padding-bottom: 0;
 }
 
 button {
 	margin: 5px auto;
+	border: none;
+	background: transparent;
+	font-size: 35px;
+}
+
+button:hover {
+	color: teal;
 }
 
 .number-bay {
 	float: left;
-	width: 85%;
+	width: 84%;
 }
 
 .operator-bay {
 	float: left;
-	width: 13%;
+	width: 11%;
 	margin-left: 2%;
+	padding-left: 2%;
+	border-left: 2px solid black;
 }
 
 .operator-bay button{
 	width: 100%;
-	border: 1px black solid;
-	padding: 25% 0;
+	padding: 35% 0;
 	text-align: center;
 }
 

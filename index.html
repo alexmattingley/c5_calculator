@@ -5,6 +5,8 @@
 	<link rel="stylesheet" href="style.css">
 	<title>A rad calculator</title>
 </head>
+<audio id="click" src="sounds/Click.mp3"></audio>
+<audio id="slurp" src="sounds/Slurp.mp3"></audio>
 <body class="background-0">
 <div class="calculator-container group">
 	<input class="output-area" type="text" id="input-box">
@@ -18,7 +20,9 @@
 		<button class="number-button">7</button>
 		<button class="number-button">8</button>
 		<button class="number-button">9</button>
-		<button class="number-button">0</button>
+		<button class="number-button bottom-row">0</button>
+		<button class="operator-button bottom-row" id="c_button" type="button">C</button>
+		<button class="operator-button bottom-row" id="ac_button" type="button">AC</button>
 	</div>
 	<div class="operator-bay">
 		<button class="operator-button" id="add_button" type="button">+</button>
@@ -26,8 +30,6 @@
 		<button class="operator-button" id="mul_button" type="button">*</button>
 		<button class="operator-button" id="div_button" type="button">/</button>
 		<button class="operator-button" id="equal_button" type="button">=</button>
-		<button class="operator-button" id="c_button" type="button">C</button>
-		<button class="operator-button" id="ac_button" type="button">AC</button>
 	</div>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="main.js"></script>
