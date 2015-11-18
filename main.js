@@ -339,6 +339,25 @@ $('#c_button').click(function() {
 });
 
 
+/******************
+ * fun stuff
+ */
+var bg_and_sound_counter = 0;
+var class_counter = 0;
+
+function background_switch() {
+  bg_and_sound_counter++;
+
+  if(bg_and_sound_counter%10 == 0) {
+    class_counter++;
+    $('body').removeClass();
+    $('body').addClass('background-' + class_counter);
+  }
+}
+
+
+
+
 $(document).ready(function(){
 
   $('.number-button').click(function(){
@@ -348,6 +367,10 @@ $(document).ready(function(){
 
   $('#equal_button').click(function(){
     solve_equation();
+  });
+
+  $('button').click(function(){
+    background_switch();
   });
 
 });
