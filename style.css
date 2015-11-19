@@ -19,11 +19,13 @@
 .background-3 {
 	background: url('photos/IMG_4218.jpg');
 	background-size: cover;
+	background-position: center;
 }
 
 body {
 	height: 100vh;
 	padding: 0px 15px;
+	font-family: 'Nunito', sans-serif;
 }
 
 
@@ -66,6 +68,10 @@ button {
 	font-size: 35px;
 }
 
+button::selection {
+	color: red;
+}
+
 button:hover {
 	color: teal;
 }
@@ -85,14 +91,8 @@ button:hover {
 
 .operator-bay button{
 	width: 100%;
-	padding: 35% 0;
+	padding: 38% 0;
 	text-align: center;
-}
-
-@media (min-width: 400px){
-	.operator-bay button {
-		padding: 30% 0;
-	}
 }
 
 /*Clearfix hack*/
