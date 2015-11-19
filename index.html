@@ -1,34 +1,39 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
-		<link rel="stylesheet" href="style.css">
-		<title>A rad calculator</title>
-	</head>
-	<body>
-		<div class="calculator-container group">
-			<div class="output-area">
-				<h3>The output will go Here</h3>
-			</div>
-			<div class="calc-area-numbers">
-				<p class="number-button">1</p>
-				<p class="number-button">2</p>
-				<p class="number-button">3</p>
-				<p class="number-button">4</p>
-				<p class="number-button">5</p>
-				<p class="number-button">6</p>
-				<p class="number-button">7</p>
-				<p class="number-button">8</p>
-				<p class="number-button">9</p>
-			</div>
-			<div class="calc-area-symbols">
-				<p class="plus symbol">+</p>
-				<p class="subtract symbol">-</p>
-				<p class="multiply symbol">*</p>
-				<p class="divide symbol">/</p>
-				<p class="equals symbol">=</p>
-				<p class="clear symbol">C</p>
-			</div>
-		</div>
-	</body>
+<head>
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+	<link rel="stylesheet" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Nunito:400,700|Paytone+One' rel='stylesheet' type='text/css'>
+	<title>A rad calculator</title>
+</head>
+<audio id="click" src="sounds/Click.mp3"></audio>
+<audio id="slurp" src="sounds/Slurp.mp3"></audio>
+<body class="background-0">
+<div class="calculator-container group position-center">
+	<input class="output-area" type="text" id="input-box">
+	<div class="number-bay">
+		<button class="number-button">1</button>
+		<button class="number-button">2</button>
+		<button class="number-button">3</button>
+		<button class="number-button">4</button>
+		<button class="number-button">5</button>
+		<button class="number-button">6</button>
+		<button class="number-button">7</button>
+		<button class="number-button">8</button>
+		<button class="number-button">9</button>
+		<button class="number-button bottom-row">0</button>
+		<button class="operator-button bottom-row" id="c_button" type="button">C</button>
+		<button class="operator-button bottom-row" id="ac_button" type="button">AC</button>
+	</div>
+	<div class="operator-bay">
+		<button class="operator-button" id="add_button" type="button">+</button>
+		<button class="operator-button" id="sub_button" type="button">-</button>
+		<button class="operator-button" id="mul_button" type="button">*</button>
+		<button class="operator-button" id="div_button" type="button">/</button>
+		<button class="operator-button" id="equal_button" type="button">=</button>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="main.js"></script>
+</div>
+</body>
 </html>
