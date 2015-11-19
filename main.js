@@ -77,27 +77,27 @@ operator_index, operator_array, number_array, final_number
 returns: N/A
 ********************/
 
-var display_array =[];
+var calculate_array =[];
 var for_display;
 
 function create_display() {
   console.log(calculate_array);
-  display_array = [];
-  var display_array_index = 0;
+  calculate_array = [];
+  var calculate_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
-    display_array[display_array_index] = '';
-    display_array[display_array_index] = number_array[x];
-    display_array_index = display_array_index+2;
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = number_array[x];
+    calculate_array_index = calculate_array_index+2;
   }
-  display_array_index = 1;
+  calculate_array_index = 1;
   for(var z = 0; z < operator_array.length; z++){
-    display_array[display_array_index] = '';
-    display_array[display_array_index] = operator_array[z];
-    display_array_index = display_array_index + 2;
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = operator_array[z];
+    calculate_array_index = calculate_array_index + 2;
   }
   for_display = '';
-  for(var y = 0; y < display_array.length; y++){
-    for_display = for_display + display_array[y];
+  for(var y = 0; y < calculate_array.length; y++){
+    for_display = for_display + calculate_array[y];
   }
   $input_box.val(for_display);
 }
@@ -297,10 +297,8 @@ function clear_data() {
   operator_array = [];
   operator_index = 0;
   operator = '';
-  display_array = [];
-  display_index = 0;
-  for_display = '';
   calculate_array = [];
+  for_display = '';
 }
 
 
