@@ -82,18 +82,7 @@ var for_display;
 
 function create_display() {
   console.log(calculate_array);
-  var calculate_array_index = 0;
-  for(var x = 0; x < number_array.length; x++){
-    calculate_array[calculate_array_index] = '';
-    calculate_array[calculate_array_index] = number_array[x];
-    calculate_array_index = calculate_array_index+2;
-  }
-  calculate_array_index = 1;
-  for(var z = 0; z < operator_array.length; z++){
-    calculate_array[calculate_array_index] = '';
-    calculate_array[calculate_array_index] = operator_array[z];
-    calculate_array_index = calculate_array_index + 2;
-  }
+  create_calc_array();
   for_display = '';
   for(var y = 0; y < calculate_array.length; y++){
     for_display = for_display + calculate_array[y];
@@ -226,10 +215,6 @@ returns: N/A
 ********************/
 
 function create_calc_array() {
-  console.log('calc_array inside of create calc', calculate_array);
-  if(number_array[0] == ''){
-    number_array[0] = '0';
-  }
   var calculate_array_index;
   calculate_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
@@ -243,17 +228,22 @@ function create_calc_array() {
     calculate_array[calculate_array_index] = operator_array[z];
     calculate_array_index = calculate_array_index + 2;
   }
+}
+
+function solve_equation() {
+
+  if(number_array[0] == ''){
+    number_array[0] = '0';
+  }
+
+  create_calc_array();
 
   for(var y = 0; y < calculate_array.length; y++){
     if(calculate_array[y] != '+' && calculate_array[y] != '-' && calculate_array[y] != '*' && calculate_array[y] != '/'){
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
-  console.log('calc_array inside of create calc', calculate_array);
-}
 
-function solve_equation() {
-  create_calc_array();
   for(var j = 0; j < calculate_array.length; j++){
     if(calculate_array[j] == '*' || calculate_array[j] == '/'){
       operator_switch(calculate_array, j, j-1,j+1);
