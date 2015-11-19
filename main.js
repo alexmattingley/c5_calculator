@@ -25,20 +25,10 @@ var refresh_boolean = false; //this for the reset after someone activates calcul
 var clear_boolean = false;
 
 
+//Calculate Array
 
+var calculate_array =[]; //this variable is responsible for storing values that will be used for calculations and displays
 
-/********************
- Function name(s): refresh display
- Purpose: This function clears the display values but NOT the number value
- Params: N/A
- Globals: number_array, number_index
- returns: N/A
- ********************/
-
-function refresh_display() {
-  console.log('refresh_display called');
-  $input_box.val(number_array[number_index]);
-}
 
 /********************
 Function name: number click()
@@ -77,7 +67,22 @@ operator_index, operator_array, number_array, final_number
 returns: N/A
 ********************/
 
-var calculate_array =[];
+function create_calc_array() {
+  var calculate_array_index;
+  calculate_array_index = 0;
+  for(var x = 0; x < number_array.length; x++){
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = number_array[x];
+    calculate_array_index = calculate_array_index+2;
+  }
+  calculate_array_index = 1;
+  for(var z = 0; z < operator_array.length; z++){
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = operator_array[z];
+    calculate_array_index = calculate_array_index + 2;
+  }
+}
+
 var for_display;
 
 function create_display() {
@@ -214,36 +219,24 @@ Globals: refresh_boolean, operator
 returns: N/A
 ********************/
 
-function create_calc_array() {
-  var calculate_array_index;
-  calculate_array_index = 0;
-  for(var x = 0; x < number_array.length; x++){
-    calculate_array[calculate_array_index] = '';
-    calculate_array[calculate_array_index] = number_array[x];
-    calculate_array_index = calculate_array_index+2;
-  }
-  calculate_array_index = 1;
-  for(var z = 0; z < operator_array.length; z++){
-    calculate_array[calculate_array_index] = '';
-    calculate_array[calculate_array_index] = operator_array[z];
-    calculate_array_index = calculate_array_index + 2;
-  }
-}
+
 
 function solve_equation() {
 
-  if(number_array[0] == ''){
+  if(number_array[0] == ''){//This is to handle negative numbers right of the bat
     number_array[0] = '0';
   }
 
   create_calc_array();
 
+  //turn all strings that are numbers into actual numbers so we can feed them into operator switch
   for(var y = 0; y < calculate_array.length; y++){
     if(calculate_array[y] != '+' && calculate_array[y] != '-' && calculate_array[y] != '*' && calculate_array[y] != '/'){
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
 
+  //Handles multiplication and division first
   for(var j = 0; j < calculate_array.length; j++){
     if(calculate_array[j] == '*' || calculate_array[j] == '/'){
       operator_switch(calculate_array, j, j-1,j+1);
@@ -251,12 +244,15 @@ function solve_equation() {
     }
   }
 
+  //Handles addition and subtraction.
   for(var i = 0; i < calculate_array.length; i++){
     if(calculate_array[i] == '+' || calculate_array[i] == '-'){
       operator_switch(calculate_array, i, i-1, i+1);
       i = i-1;
     }
   }
+
+  //Stop any division by zero
   if(divide_zero_boolean){
     calculate_array[0] = 'undefined';
   }
@@ -285,6 +281,17 @@ function clear_data() {
   for_display = '';
 }
 
+/********************
+ Function name(s): refresh display
+ Purpose: This function clears the display values but NOT the number value
+ Params: N/A
+ Globals: number_array, number_index
+ returns: N/A
+ ********************/
+
+function refresh_display() {
+  $input_box.val(number_array[number_index]);
+}
 
 /********************
 Function name(s): A/C button
