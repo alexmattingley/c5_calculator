@@ -1,5 +1,5 @@
 /**************
-Defining global variables
+Defining global variables that apply through multiple functions
 **************/
 
 //number variables and arrays
@@ -22,7 +22,8 @@ var $input_box = $('#input-box');
 //refresh variables 
 
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
-var clear_bolean = false;
+var clear_boolean = false;
+
 
 
 
@@ -54,13 +55,13 @@ function number_click(digit_value) {
     refresh_boolean = false;
   }
 
-  clear_bolean = false;
+  clear_boolean = false;
   var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
-  if (divide_zero_bolean){
-    console.log('divide by zero bolean' , divide_zero_bolean);
+  if (divide_zero_boolean){
+    console.log('divide by zero boolean' , divide_zero_boolean);
     first_digit_val = '';
     clear_data();
-    divide_zero_bolean = false;
+    divide_zero_boolean = false;
   }
   var new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
   $input_box.val(new_value);//this is taking that new value and putting it in the display
@@ -104,7 +105,7 @@ function create_display() {
 function repeat_op_buttons() {
   //remember that before any of this runs, you set an operator value in the anon functions
   operator_array[operator_index] = operator;
-  clear_bolean = true;
+  clear_boolean = true;
   number_index++;
   operator_index++;
   number_array[number_index] = '';
@@ -153,7 +154,7 @@ returns: N/A
 ********************/
 
 var operation_result;
-var divide_zero_bolean = false;
+var divide_zero_boolean = false;
 
 function operation_helper(relevant_array, first_number_index){
   relevant_array.splice(first_number_index,2);
@@ -183,7 +184,7 @@ function div_numbers(relevant_array, first_number_index, second_number_index){
     operation_helper(relevant_array, first_number_index);
     console.log('op result' , operation_result);
     console.log('num array' , number_array);
-    divide_zero_bolean = true;
+    divide_zero_boolean = true;
 
   }else {
     console.log('div_numbs');
@@ -271,7 +272,7 @@ function solve_equation() {
       i = i-1;
     }
   }
-  if(divide_zero_bolean){
+  if(divide_zero_boolean){
     calculate_array[0] = 'undefined';
   }
   final_number = calculate_array[0];
@@ -327,10 +328,10 @@ returns: N/A
 ********************/
 
 $('#c_button').click(function() {
-  if(!clear_bolean){
+  if(!clear_boolean){
     number_array[number_index] = '';
     create_display();
-    clear_bolean = true;
+    clear_boolean = true;
   }else {
    operator_index--;
    operator_array[operator_index] = '';
