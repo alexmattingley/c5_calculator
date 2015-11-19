@@ -59,11 +59,11 @@ function number_click(digit_value) {
 }
 
 /********************
-Function name(s): Create Display
-Purpose:
+Function name(s): create_calc_array
+Purpose:This function creates the calculate array which is used for creating the display and for making calculations. Each time it is called
+ it rewrites the calculate array. There might be a better way to do this, but for now this works.
 Params: N/A
-Globals: operator, number_index (this variable is the index for the opperand_array), 
-operator_index, operator_array, number_array, final_number
+Globals: calculate_array, number_array, operator_array
 returns: N/A
 ********************/
 
@@ -83,10 +83,16 @@ function create_calc_array() {
   }
 }
 
-var for_display;
+/********************************
+ Function name(s): create_display
+ Purpose:This function creates the string that will be displayed, and it is called each time that we click an operator button
+ Params: N/A
+ Globals: calculate_array, $input_box
+ returns: N/A
+ */
 
 function create_display() {
-  console.log(calculate_array);
+  var for_display;
   create_calc_array();
   for_display = '';
   for(var y = 0; y < calculate_array.length; y++){
@@ -95,42 +101,27 @@ function create_display() {
   $input_box.val(for_display);
 }
 
+/******************************
+ *
+ * @param button_id
+ */
 
-function repeat_op_buttons() {
-  //remember that before any of this runs, you set an operator value in the anon functions
-  operator_array[operator_index] = operator;
-  clear_boolean = true;
-  number_index++;
-  operator_index++;
-  number_array[number_index] = '';
-  create_display();
+function operator_click(button_id){
+  $(button_id).click(function(){
+    operator = $(button_id).text();
+    operator_array[operator_index] = operator;
+    clear_boolean = true;
+    number_index++;
+    operator_index++;
+    number_array[number_index] = '';
+    create_display();
+  });
 }
 
-
-// Activates on the press of the + button
-$("#add_button").click(function(){
-  operator = "+";//setting the operator to +
-  repeat_op_buttons(); //calling above function
-  
-});
-
-//Activates on the press of the - button
-$("#sub_button").click(function(){
-  operator = "-";
-  repeat_op_buttons();
-});
-
-//Activates on the press of the * button
-$("#mul_button").click(function(){
-  operator = "*";
-  repeat_op_buttons();
-});
-
-//Activates on the press of the / button
-$("#div_button").click(function(){
-  operator = "/";
-  repeat_op_buttons();
-});
+operator_click('#add_button');
+operator_click('#sub_button');
+operator_click('#mul_button');
+operator_click('#div_button');
 
 
 
@@ -278,7 +269,6 @@ function clear_data() {
   operator_index = 0;
   operator = '';
   calculate_array = [];
-  for_display = '';
 }
 
 /********************
@@ -293,29 +283,15 @@ function refresh_display() {
   $input_box.val(number_array[number_index]);
 }
 
-/********************
-Function name(s): A/C button
-Purpose: This function is triggered on the click of ac_button and clears 
-both the display and the data
-Params: N/A
-Globals: refresh_boolean
-returns: N/A
-********************/
+/***********************
+ * AC and Clear Buttons
+ */
 
 $('#ac_button').click(function(){
   clear_data();
   refresh_display();
   refresh_boolean = false;
 });
-
-/********************
-Function name(s): C button
-Purpose: This function is triggered on the click of c_button and clears 
-both the display and the data of the most recently typed number
-Params: N/A
-Globals: number_array, number_index, operator
-returns: N/A
-********************/
 
 $('#c_button').click(function() {
   if(!clear_boolean){
