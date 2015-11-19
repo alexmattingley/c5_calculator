@@ -82,7 +82,6 @@ var for_display;
 
 function create_display() {
   console.log(calculate_array);
-  calculate_array = [];
   var calculate_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
     calculate_array[calculate_array_index] = '';
@@ -226,14 +225,8 @@ Globals: refresh_boolean, operator
 returns: N/A
 ********************/
 
-//function calculate() {//define calculate function
-//  refresh_boolean = true;//allows someone to but new number into opperand_array and the display
-//  clear_data();//clears the values from opperand array. see clear_data function below.
-//}
-
-var calculate_array = [];
-
 function create_calc_array() {
+  console.log('calc_array inside of create calc', calculate_array);
   if(number_array[0] == ''){
     number_array[0] = '0';
   }
@@ -256,6 +249,7 @@ function create_calc_array() {
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
+  console.log('calc_array inside of create calc', calculate_array);
 }
 
 function solve_equation() {
