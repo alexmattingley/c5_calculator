@@ -44,7 +44,7 @@ function refresh_display() {
 Function name: number click()
 Purpose: activates on click of any of the number buttons
 Params: digit_value
-Globals: new_value, number_array, number_index, new_value
+Globals: refresh_boolean, divide_zero_boolean, $input_box, number_array, number_index
 returns: N/A
 ********************/
 
@@ -56,21 +56,21 @@ function number_click(digit_value) {
   }
 
   clear_boolean = false;
-  var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
+  var current_val = $input_box.val(); //this is taking the current string being displayed and sticking it into a variable.
   if (divide_zero_boolean){
     console.log('divide by zero boolean' , divide_zero_boolean);
-    first_digit_val = '';
+    current_val = '';
     clear_data();
     divide_zero_boolean = false;
   }
-  var new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
-  $input_box.val(new_value);//this is taking that new value and putting it in the display
-  number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
+  current_val = current_val + digit_value; //this is taking the current digits and concatenating them the newly pressed digits
+  $input_box.val(current_val);//this is taking that new value and putting it in the display
+  number_array[number_index] = number_array[number_index] + digit_value; //this is assigning the score card or number_array;
 }
 
 /********************
-Function name(s): operator buttons/anonymous functions
-Purpose: activates on clicks of operator buttons. These functions mirror each other
+Function name(s): Create Display
+Purpose:
 Params: N/A
 Globals: operator, number_index (this variable is the index for the opperand_array), 
 operator_index, operator_array, number_array, final_number
@@ -81,6 +81,7 @@ var display_array =[];
 var for_display;
 
 function create_display() {
+  console.log(calculate_array);
   display_array = [];
   var display_array_index = 0;
   for(var x = 0; x < number_array.length; x++){
