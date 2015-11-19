@@ -83,7 +83,7 @@ input.output-area {
 	border-left: 2px solid black;
 }
 
-.number-bay .number-button, .number-bay .operator-button {
+.number-bay button {
 	display: inline-block;
 	padding: 9% 0;
 	width: 31.9%;
@@ -103,6 +103,20 @@ input.output-area {
 @media (min-width: 450px) {
 	.calculator-container {
 		max-width: 400px;
+	}
+}
+
+@media (min-width: 650px) {
+	button {
+		font-size: 50px;
+	}
+
+	.operator-bay button{
+		padding: 10% 0;
+	}
+
+	.number-bay button {
+		padding: 5% 0;
 	}
 }
 
