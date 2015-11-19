@@ -1,3 +1,11 @@
+body {
+	height: 100vh;
+	padding: 0px 15px;
+	box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	position: relative;
+}
+
 .background-0 {
 	background: url('photos/IMG_4213.jpg') no-repeat;
 	background-size: cover;
@@ -22,51 +30,18 @@
 	background-position: center;
 }
 
-body {
-	height: 100vh;
-	padding: 0px 15px;
-	box-sizing: border-box;
-	font-family: 'Nunito', sans-serif;
-	position: relative;
-}
-
 .position-center {
 	position: absolute;
-	top: 50%;
+	top: 45%; /**This is because things look a little weird perfectly centered**/
 	left: 50%;
 }
 
-
-input.output-area {
-	background: transparent;
-	border: none;
-	border-bottom: 2px black solid;
-	width: 100%;
-	box-sizing: border-box;
-	font-size: 35px;
-}
-
 .calculator-container {
-	width: 100%;
+	width: 95%;
 	margin: auto;
 	border: 2px black solid;
 	box-sizing: border-box;
 
-}
-
-.calculator-container .output-area {
-	padding: 20px 5px;
-	text-align: right;
-}
-.number-bay .number-button, .number-bay .operator-button {
-	display: inline-block;
-	padding: 9% 0;
-	width: 31.9%;
-	text-align: center;
-}
-
-.number-bay .bottom-row {
-	padding-bottom: 0;
 }
 
 button {
@@ -84,6 +59,17 @@ button:hover {
 	color: teal;
 }
 
+input.output-area {
+	background: transparent;
+	border: none;
+	border-bottom: 2px black solid;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 35px;
+	padding: 20px 5px;
+	text-align: right;
+}
+
 .number-bay {
 	float: left;
 	width: 84%;
@@ -95,6 +81,17 @@ button:hover {
 	margin-left: 2%;
 	padding-left: 2%;
 	border-left: 2px solid black;
+}
+
+.number-bay .number-button, .number-bay .operator-button {
+	display: inline-block;
+	padding: 9% 0;
+	width: 31.9%;
+	text-align: center;
+}
+
+.number-bay .bottom-row {
+	padding-bottom: 0;
 }
 
 .operator-bay button{
