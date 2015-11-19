@@ -357,6 +357,23 @@ function background_switch() {
 }
 
 
+/******************
+ * Horizontally and Vertically Center something
+ */
+
+function center_element(element) {
+  $(element).addClass('position-center');
+  var element_height = $(element).outerHeight();
+  console.log(element_height);
+  var margin_top_offset = element_height/-2;
+  var element_width = $(element).outerWidth();
+  console.log(element_width);
+  var margin_left_offset = element_width/-2;
+  $(element).css('margin-top', margin_top_offset);
+  $(element).css('margin-left', margin_left_offset);
+
+}
+
 
 
 $(document).ready(function(){
@@ -373,6 +390,12 @@ $(document).ready(function(){
   $('button').click(function(){
     background_switch();
   });
+
+});
+
+$(window).load(function(){
+
+  center_element('.position-center');
 
 });
 

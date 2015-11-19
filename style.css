@@ -25,7 +25,15 @@
 body {
 	height: 100vh;
 	padding: 0px 15px;
+	box-sizing: border-box;
 	font-family: 'Nunito', sans-serif;
+	position: relative;
+}
+
+.position-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
 }
 
 
@@ -39,10 +47,10 @@ input.output-area {
 }
 
 .calculator-container {
-	max-width: 100%;
-	max-width: 400px;
-	margin: 100px auto;
+	width: 100%;
+	margin: auto;
 	border: 2px black solid;
+	box-sizing: border-box;
 
 }
 
@@ -68,8 +76,8 @@ button {
 	font-size: 35px;
 }
 
-button::selection {
-	color: red;
+button:focus {
+	outline:0;
 }
 
 button:hover {
@@ -93,6 +101,12 @@ button:hover {
 	width: 100%;
 	padding: 38% 0;
 	text-align: center;
+}
+
+@media (min-width: 450px) {
+	.calculator-container {
+		max-width: 400px;
+	}
 }
 
 /*Clearfix hack*/
