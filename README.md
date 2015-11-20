@@ -1,5 +1,13 @@
 # c5_calculator
 
+##A basic calculator application
+
+I initially began this project during my time as a student at LearningFuze. The idea behind the project was to create a very basic calculator using javascript to perform the basic calculations.
+I noticed that alot of the calculators that I found online didn't look very nice, so I wanted to design something a little different that was visually appealing.
+
+
+I am not entirely gifted at math so this project was really challenging for me.
+
 Make seperate branches for each version<br>
 Example branch names:
 - v0.1
@@ -67,7 +75,7 @@ Functionality:
 
 ## Calculator 2.0
 
-HTML: 
+HTML:
 - Place a result field on the calculator to hold the result of all math
 Functionality:
 - Pressing successive mathematical operations does not complete the operation, for example
