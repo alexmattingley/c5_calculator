@@ -341,9 +341,11 @@ function background_switch() {
   document.getElementById('click').play();
   if(bg_and_sound_counter%10 == 0 && bg_and_sound_counter < 40) {
     document.getElementById('slurp').play();
+    var current_bg = '.background-' + class_counter;
+    $(current_bg).fadeOut(500);
     class_counter++;
-    $('body').removeClass();
-    $('body').addClass('background-' + class_counter);
+    current_bg = '.background-' + class_counter;
+    $(current_bg).fadeIn(2000);
   }
 }
 

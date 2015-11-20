@@ -1,9 +1,13 @@
 body {
 	height: 100vh;
-	padding: 0px 15px;
 	box-sizing: border-box;
 	font-family: 'Nunito', sans-serif;
 	position: relative;
+}
+
+.hero-bg {
+	width: 100%;
+	height: 100%;
 }
 
 .background-0 {
@@ -13,18 +17,21 @@ body {
 }
 
 .background-1 {
+	display: none;
 	background: url('photos/IMG_4216.jpg') no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .background-2 {
+	display: none;
 	background: url('photos/IMG_4217.jpg') no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .background-3 {
+	display: none;
 	background: url('photos/IMG_4218.jpg');
 	background-size: cover;
 	background-position: center;
