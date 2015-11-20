@@ -18,7 +18,6 @@ var operator_array = [];
 var $input_box = $('#input-box');
 
 
-
 //refresh variables 
 
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
@@ -263,7 +262,12 @@ function solve_equation() {
   if(divide_zero_boolean){
     calculate_array[0] = 'undefined';
   }
-  final_number = calculate_array[0];
+
+  if(calculate_array[0]%1 != 0){
+    final_number = calculate_array[0].toFixed(2);
+  }else {
+    final_number = calculate_array[0];
+  }
   $input_box.val(final_number);
   clear_data();
   number_array[number_index] = final_number;
