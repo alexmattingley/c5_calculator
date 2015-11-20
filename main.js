@@ -334,12 +334,18 @@ $('#c_button').click(function() {
  returns: N/A
  ********************/
 var bg_and_sound_counter = 0;
+var class_counter = 0;
 
 function background_switch() {
   bg_and_sound_counter++;
   document.getElementById('click').play();
   if(bg_and_sound_counter%10 == 0 && bg_and_sound_counter < 40) {
     document.getElementById('slurp').play();
+    var current_bg = '.background-' + class_counter;
+    $(current_bg).fadeOut(500);
+    class_counter++;
+    current_bg = '.background-' + class_counter;
+    $(current_bg).fadeIn(2000);
   }
 }
 
