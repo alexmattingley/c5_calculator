@@ -75,7 +75,7 @@ Functionality:
    - after the = key is pressed, would perform all math, yielding 15
    - put all results into the result field
 
-### Calculator 3.0 (completed 11/20/2016)
+### Calculator 3.0 (completed 11/20/2015)
 
 - Redesign user interface
 - Switch backgrounds depending on number of clicks, avoid jerky loading of background image.
