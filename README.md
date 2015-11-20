@@ -1,6 +1,6 @@
 # c5_calculator
 
-##A basic calculator application
+## A basic calculator application
 
 I initially began this project during my time as a student at LearningFuze. The idea behind the project was to create a very basic calculator using javascript to perform the basic calculations.
 I noticed that alot of the calculators that I found online didn't look very nice, so I wanted to design something a little different that was visually appealing.
@@ -14,7 +14,7 @@ than I originally anticipated.
 
 This project really hit home the need to pay close attention to data types, particularity how javascript handles strings and numbers differently. For example:
 
-var num = '1'+'2' -> num == '12'. This is because javascript treats uses the + to concatenate the values rather than as an addition symbol.
+var num = '1'+'2' -> num == '12'. This is because javascript uses the + to concatenate the values rather than as an addition symbol.
 
 There are tons of weird little quirks like the one above, and building a calculator forces one to be aware and account for all of them.
 
