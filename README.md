@@ -6,14 +6,25 @@ I initially began this project during my time as a student at LearningFuze. The 
 I noticed that alot of the calculators that I found online didn't look very nice, so I wanted to design something a little different that was visually appealing.
 
 
-I am not entirely gifted at math so this project was really challenging for me.
+##Site challenges and Fun Problems
 
-Make seperate branches for each version<br>
-Example branch names:
-- v0.1
-- v0.5
-- v1.0
-- etc...
+This was the second javascript centered project that I ever took on, so subsequently it was a challenge from the start. The purpose of the project was to learn a bit more about Javascript and
+the peculiar aspects of the language. I was under the impression at the start of the project that it would be very simple but I was surprised how much more nuanced it was
+than I originally anticipated.
+
+This project really hit home the need to pay close attention to data types, particularity how javascript handles strings and numbers differently. For example:
+
+var num = '1'+'2' -> num == '12'. This is because javascript treats uses the + to concatenate the values rather than as an addition symbol.
+
+There are tons of weird little quirks like the one above, and building a calculator forces one to be aware and account for all of them.
+
+##Languages and Skills Used
+
+HTML, CSS, Javascript, Jquery, Git & Github
+
+
+
+##Scope
 
 ## Calculator 0.1
 HTML:
@@ -27,7 +38,7 @@ Functionality:
 - Two numbers are pulled from the inputs
 - Result is put into result_display div’s contents
 
-## Calculator 0.5
+### Calculator 0.5
 Additional Functionality:
 - Add buttons / functions for:
    - subtract
@@ -35,11 +46,8 @@ Additional Functionality:
      - Take into account if the divisor is 0
    - multiply
 
-## Calculator 1.0
+### Calculator 1.0
 HTML:
-- 1 input (for operand/operator display)
-- 1 input (for result display)
-  - cannot be edited
 - 10 buttons, 1 for each digit (0-9)
 - 4 buttons, 1 per operator (+,-,/,*)
 - 1 button, for an equal operator (=)
@@ -48,32 +56,16 @@ Functionality:
 - Each takes 2 numbers as input
 - Each returns 1 number as output, the result of its math
 - calculate function
-- called by = / enter button
+- called by =
 - uses a switch to pick which math function to run
 - updates the result input with the value of the mathematical operation
 
-# Extra Credit
-- add decimal point
-- add sign inversion ("2" becomes "(-2)" and vice versa)
-- add exponent button "x<sup>y</sup>" that calculates the first number raised to the power of the 2nd number"
-- Add error message when dividing by 0
-
-## Calculator 1.5
+### Calculator 1.5
 HTML:
 - AC - clears all numbers, the operator, and the display
 - Clear - clears only the current number and display
 
-Functionality:
-- Allow successive mathematical operations
-   - For example, 2+3+4 should result in:
-      - after pressing the 2nd +, should automatically total 2 + 3 and update the display (5)
-      - Pressing 4 should take the previous result and show it added to 4 (5+4)
-- Pressing a successive mathematical operation and then pressing = will perform the operation on that number as both number 1 and number 2, for example
-   - press 1+2=   (gives you 3)
-   - press +=  (gives you 6)
-   - press +=  (gives you 12)
-
-## Calculator 2.0
+### Calculator 2.0
 
 HTML:
 - Place a result field on the calculator to hold the result of all math
@@ -82,3 +74,11 @@ Functionality:
    - 1+2+3+4+5 would not do anything until the = key is pressed
    - after the = key is pressed, would perform all math, yielding 15
    - put all results into the result field
+
+### Calculator 3.0 (completed 11/20/2016)
+
+- Redesign user interface
+- Switch backgrounds depending on number of clicks, avoid jerky loading of background image.
+- refactor code, move or remove unnecessary globals, arrays and functions.
+
+
