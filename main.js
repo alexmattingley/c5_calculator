@@ -29,6 +29,10 @@ var clear_boolean = false;
 
 var calculate_array =[]; //this variable is responsible for storing values that will be used for calculations and displays
 
+//divide by zero boolean
+
+var divide_zero_boolean = false;
+
 
 /********************
 Function name: number click()
@@ -102,8 +106,10 @@ function create_display() {
 }
 
 /******************************
- *
+ * Function name: operator_click
+ * purpose: triggered on click of any of the operator buttons, creates operator array, increments number_index and calls the create display function
  * @param button_id
+ * Globals: Number_array, number_index, operator_array, operator_index, operator, clear_boolean,
  */
 
 function operator_click(button_id){
@@ -123,61 +129,76 @@ operator_click('#sub_button');
 operator_click('#mul_button');
 operator_click('#div_button');
 
-
-
-/*************************
-****End of operator buttons
-**************************/
-
-/********************
-Function name(s): operator action functions. These include add_numbers(), sub_numbers(),
-  mul_numbers(), div_numbers().
-Purpose: These functions each perform an operation on a set of numbers
-Params: N/A
-Globals: final_number, number_array
-returns: N/A
-********************/
+/*********************
+ * Function Name: operation_helper
+ * Purpose: helper function for operation functions below it
+ * @param relevant_array
+ * @param first_number_index
+ * Globals: Operation_result
+ * returns: N/A
+ */
 
 var operation_result;
-var divide_zero_boolean = false;
 
 function operation_helper(relevant_array, first_number_index){
   relevant_array.splice(first_number_index,2);
   relevant_array[first_number_index] = operation_result;
 }
 
-//creation of add_numbers function
+
+/*********************
+ * Function name(s): operator action functions. These include add_numbers(), sub_numbers(),
+ mul_numbers(), div_numbers().
+ * Purpose: These functions each perform an operation on a set of numbers
+ * @param relevant_array
+ * @param first_number_index
+ * @param second_number_index
+ * Globals: divide_zero_boolean, operation_result
+ * returns: N/A
+ */
+
 function add_numbers(relevant_array, first_number_index, second_number_index){
   operation_result = relevant_array[first_number_index] + relevant_array[second_number_index];
   operation_helper(relevant_array, first_number_index);
 }
-// creation of sub_numbers function
+
 function sub_numbers(relevant_array, first_number_index, second_number_index){
   operation_result = relevant_array[first_number_index] - relevant_array[second_number_index];
   operation_helper(relevant_array, first_number_index);
 }
-//creation of mul_numbers function
+
 function mul_numbers(relevant_array, first_number_index, second_number_index){
   operation_result = relevant_array[first_number_index] * relevant_array[second_number_index];
   operation_helper(relevant_array, first_number_index);
 }
-//creation of div_numbers function
+
 function div_numbers(relevant_array, first_number_index, second_number_index){
-  console.log(relevant_array[second_number_index]);
   if(relevant_array[second_number_index] == 0){
     operation_result = "undefined";
     operation_helper(relevant_array, first_number_index);
-    console.log('op result' , operation_result);
-    console.log('num array' , number_array);
     divide_zero_boolean = true;
 
   }else {
-    console.log('div_numbs');
     operation_result = relevant_array[first_number_index] / relevant_array[second_number_index];
     operation_helper(relevant_array, first_number_index);
   }
 
 }
+
+/*************************
+ ****End of operator action functions
+ **************************/
+
+/**********************
+ * function name: operator_switch
+ * purpose: calls each operation depending on operator
+ * @param relevant_array
+ * @param current_operator_index
+ * @param first_number_index
+ * @param second_number_index
+ * globals: N/A
+ * return: N/A
+ */
 
 function operator_switch(relevant_array, current_operator_index, first_number_index, second_number_index) {
   switch(relevant_array[current_operator_index]) {//beginning of switch
@@ -196,17 +217,12 @@ function operator_switch(relevant_array, current_operator_index, first_number_in
   }
 }
 
-
-/*************************
-****End of operator action functions
-**************************/
-
 /********************
-Function name(s): calculate()
-Purpose: This function calculates and is triggered on a click of the equal button. 
+Function name(s): solve_equation
+Purpose: This function calculates using the calculate_array and is triggered on a click of the equal button.
   It ultimately calls the operator actions
 Params: N/A
-Globals: refresh_boolean, operator
+Globals: number_array, number_index, calculate_array, divide_zero_boolean, $input_box, final_number
 returns: N/A
 ********************/
 
@@ -255,9 +271,9 @@ function solve_equation() {
 
 /********************
 Function name(s): clear data
-Purpose: This function clears the number_array values but NOT the display value
+Purpose: This function clears the relevant array values but NOT the display value
 Params: N/A
-Globals: number_array, operator, number_index, operator_array, operator_index
+Globals: number_array, number_index, operator, operator_array, operator_index, calculate_array
 returns: N/A
 ********************/
 
@@ -273,9 +289,9 @@ function clear_data() {
 
 /********************
  Function name(s): refresh display
- Purpose: This function clears the display values but NOT the number value
+ Purpose: This function clears the display values but NOT the number or operator arrays
  Params: N/A
- Globals: number_array, number_index
+ Globals: number_array, number_index, $input_box
  returns: N/A
  ********************/
 
@@ -306,9 +322,13 @@ $('#c_button').click(function() {
 });
 
 
-/******************
- * fun stuff
- */
+/********************
+ Function name(s): background_switch
+ Purpose: This function switches the background after a certain number of button clicks and creates the basic sound effects
+ Params: N/A
+ Globals: bg_and_sound_counter, class_counter
+ returns: N/A
+ ********************/
 var bg_and_sound_counter = 0;
 var class_counter = 0;
 
@@ -324,8 +344,12 @@ function background_switch() {
 }
 
 
-/******************
- * Horizontally and Vertically Center something
+/***************************
+ * function name: center_element
+ * purpose: Basic function for centering a particular element
+ * @param element
+ * Globals: N/A
+ * returns: N/A
  */
 
 function center_element(element) {
@@ -341,7 +365,9 @@ function center_element(element) {
 
 }
 
-
+/*********************
+ * document ready
+ */
 
 $(document).ready(function(){
 
@@ -359,6 +385,10 @@ $(document).ready(function(){
   });
 
 });
+
+/************************
+ * Window load (necessary for the center_element function to work properly)
+ */
 
 $(window).load(function(){
 
