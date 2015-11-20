@@ -18,33 +18,26 @@ var operator_array = [];
 var $input_box = $('#input-box');
 
 
-
 //refresh variables 
 
 var refresh_boolean = false; //this for the reset after someone activates calculate. See calculate function and number click for details and use.
 var clear_boolean = false;
 
 
+//Calculate Array
 
+var calculate_array =[]; //this variable is responsible for storing values that will be used for calculations and displays
 
-/********************
- Function name(s): refresh display
- Purpose: This function clears the display values but NOT the number value
- Params: N/A
- Globals: number_array, number_index
- returns: N/A
- ********************/
+//divide by zero boolean
 
-function refresh_display() {
-  console.log('refresh_display called');
-  $input_box.val(number_array[number_index]);
-}
+var divide_zero_boolean = false;
+
 
 /********************
 Function name: number click()
 Purpose: activates on click of any of the number buttons
 Params: digit_value
-Globals: new_value, number_array, number_index, new_value
+Globals: refresh_boolean, divide_zero_boolean, $input_box, number_array, number_index
 returns: N/A
 ********************/
 
@@ -56,143 +49,155 @@ function number_click(digit_value) {
   }
 
   clear_boolean = false;
-  var first_digit_val = $input_box.val(); //this is taking the first digit clicked and assigning it to a variable
+  var current_val = $input_box.val(); //this is taking the current string being displayed and sticking it into a variable.
   if (divide_zero_boolean){
     console.log('divide by zero boolean' , divide_zero_boolean);
-    first_digit_val = '';
+    current_val = '';
     clear_data();
     divide_zero_boolean = false;
   }
-  var new_value = first_digit_val + digit_value; //this is taking the current digits and concatinating them the newly pressed digits
-  $input_box.val(new_value);//this is taking that new value and putting it in the display
-  number_array[number_index] = number_array[number_index] + digit_value; //this is assigining the score card or number_array;
+  current_val = current_val + digit_value; //this is taking the current digits and concatenating them the newly pressed digits
+  $input_box.val(current_val);//this is taking that new value and putting it in the display
+  number_array[number_index] = number_array[number_index] + digit_value; //this is assigning the score card or number_array;
 }
 
 /********************
-Function name(s): operator buttons/anonymous functions
-Purpose: activates on clicks of operator buttons. These functions mirror each other
+Function name(s): create_calc_array
+Purpose:This function creates the calculate array which is used for creating the display and for making calculations. Each time it is called
+ it rewrites the calculate array. There might be a better way to do this, but for now this works.
 Params: N/A
-Globals: operator, number_index (this variable is the index for the opperand_array), 
-operator_index, operator_array, number_array, final_number
+Globals: calculate_array, number_array, operator_array
 returns: N/A
 ********************/
 
-var display_array =[];
-var for_display;
+function create_calc_array() {
+  var calculate_array_index;
+  calculate_array_index = 0;
+  for(var x = 0; x < number_array.length; x++){
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = number_array[x];
+    calculate_array_index = calculate_array_index+2;
+  }
+  calculate_array_index = 1;
+  for(var z = 0; z < operator_array.length; z++){
+    calculate_array[calculate_array_index] = '';
+    calculate_array[calculate_array_index] = operator_array[z];
+    calculate_array_index = calculate_array_index + 2;
+  }
+}
+
+/********************************
+ Function name(s): create_display
+ Purpose:This function creates the string that will be displayed, and it is called each time that we click an operator button
+ Params: N/A
+ Globals: calculate_array, $input_box
+ returns: N/A
+ */
 
 function create_display() {
-  display_array = [];
-  var display_array_index = 0;
-  for(var x = 0; x < number_array.length; x++){
-    display_array[display_array_index] = '';
-    display_array[display_array_index] = number_array[x];
-    display_array_index = display_array_index+2;
-  }
-  display_array_index = 1;
-  for(var z = 0; z < operator_array.length; z++){
-    display_array[display_array_index] = '';
-    display_array[display_array_index] = operator_array[z];
-    display_array_index = display_array_index + 2;
-  }
+  var for_display;
+  create_calc_array();
   for_display = '';
-  for(var y = 0; y < display_array.length; y++){
-    for_display = for_display + display_array[y];
+  for(var y = 0; y < calculate_array.length; y++){
+    for_display = for_display + calculate_array[y];
   }
   $input_box.val(for_display);
 }
 
+/******************************
+ * Function name: operator_click
+ * purpose: triggered on click of any of the operator buttons, creates operator array, increments number_index and calls the create display function
+ * @param button_id
+ * Globals: Number_array, number_index, operator_array, operator_index, operator, clear_boolean,
+ */
 
-function repeat_op_buttons() {
-  //remember that before any of this runs, you set an operator value in the anon functions
-  operator_array[operator_index] = operator;
-  clear_boolean = true;
-  number_index++;
-  operator_index++;
-  number_array[number_index] = '';
-  create_display();
+function operator_click(button_id){
+  $(button_id).click(function(){
+    operator = $(button_id).text();
+    operator_array[operator_index] = operator;
+    clear_boolean = true;
+    number_index++;
+    operator_index++;
+    number_array[number_index] = '';
+    create_display();
+  });
 }
 
+operator_click('#add_button');
+operator_click('#sub_button');
+operator_click('#mul_button');
+operator_click('#div_button');
 
-// Activates on the press of the + button
-$("#add_button").click(function(){
-  operator = "+";//setting the operator to +
-  repeat_op_buttons(); //calling above function
-  
-});
-
-//Activates on the press of the - button
-$("#sub_button").click(function(){
-  operator = "-";
-  repeat_op_buttons();
-});
-
-//Activates on the press of the * button
-$("#mul_button").click(function(){
-  operator = "*";
-  repeat_op_buttons();
-});
-
-//Activates on the press of the / button
-$("#div_button").click(function(){
-  operator = "/";
-  repeat_op_buttons();
-});
-
-
-
-/*************************
-****End of operator buttons
-**************************/
-
-/********************
-Function name(s): operator action functions. These include add_numbers(), sub_numbers(),
-  mul_numbers(), div_numbers().
-Purpose: These functions each perform an operation on a set of numbers
-Params: N/A
-Globals: final_number, number_array
-returns: N/A
-********************/
+/*********************
+ * Function Name: operation_helper
+ * Purpose: helper function for operation functions below it
+ * @param relevant_array
+ * @param first_number_index
+ * Globals: Operation_result
+ * returns: N/A
+ */
 
 var operation_result;
-var divide_zero_boolean = false;
 
 function operation_helper(relevant_array, first_number_index){
   relevant_array.splice(first_number_index,2);
   relevant_array[first_number_index] = operation_result;
 }
 
-//creation of add_numbers function
+
+/*********************
+ * Function name(s): operator action functions. These include add_numbers(), sub_numbers(),
+ mul_numbers(), div_numbers().
+ * Purpose: These functions each perform an operation on a set of numbers
+ * @param relevant_array
+ * @param first_number_index
+ * @param second_number_index
+ * Globals: divide_zero_boolean, operation_result
+ * returns: N/A
+ */
+
 function add_numbers(relevant_array, first_number_index, second_number_index){
   operation_result = relevant_array[first_number_index] + relevant_array[second_number_index];
   operation_helper(relevant_array, first_number_index);
 }
-// creation of sub_numbers function
+
 function sub_numbers(relevant_array, first_number_index, second_number_index){
   operation_result = relevant_array[first_number_index] - relevant_array[second_number_index];
   operation_helper(relevant_array, first_number_index);
 }
-//creation of mul_numbers function
+
 function mul_numbers(relevant_array, first_number_index, second_number_index){
   operation_result = relevant_array[first_number_index] * relevant_array[second_number_index];
   operation_helper(relevant_array, first_number_index);
 }
-//creation of div_numbers function
+
 function div_numbers(relevant_array, first_number_index, second_number_index){
-  console.log(relevant_array[second_number_index]);
   if(relevant_array[second_number_index] == 0){
     operation_result = "undefined";
     operation_helper(relevant_array, first_number_index);
-    console.log('op result' , operation_result);
-    console.log('num array' , number_array);
     divide_zero_boolean = true;
 
   }else {
-    console.log('div_numbs');
     operation_result = relevant_array[first_number_index] / relevant_array[second_number_index];
     operation_helper(relevant_array, first_number_index);
   }
 
 }
+
+/*************************
+ ****End of operator action functions
+ **************************/
+
+/**********************
+ * function name: operator_switch
+ * purpose: calls each operation depending on operator
+ * @param relevant_array
+ * @param current_operator_index
+ * @param first_number_index
+ * @param second_number_index
+ * globals: N/A
+ * return: N/A
+ */
 
 function operator_switch(relevant_array, current_operator_index, first_number_index, second_number_index) {
   switch(relevant_array[current_operator_index]) {//beginning of switch
@@ -211,54 +216,33 @@ function operator_switch(relevant_array, current_operator_index, first_number_in
   }
 }
 
-
-/*************************
-****End of operator action functions
-**************************/
-
 /********************
-Function name(s): calculate()
-Purpose: This function calculates and is triggered on a click of the equal button. 
+Function name(s): solve_equation
+Purpose: This function calculates using the calculate_array and is triggered on a click of the equal button.
   It ultimately calls the operator actions
 Params: N/A
-Globals: refresh_boolean, operator
+Globals: number_array, number_index, calculate_array, divide_zero_boolean, $input_box, final_number
 returns: N/A
 ********************/
 
-//function calculate() {//define calculate function
-//  refresh_boolean = true;//allows someone to but new number into opperand_array and the display
-//  clear_data();//clears the values from opperand array. see clear_data function below.
-//}
 
-var calculate_array = [];
 
-function create_calc_array() {
-  if(number_array[0] == ''){
+function solve_equation() {
+
+  if(number_array[0] == ''){//This is to handle negative numbers right of the bat
     number_array[0] = '0';
   }
-  var calculate_array_index;
-  calculate_array_index = 0;
-  for(var x = 0; x < number_array.length; x++){
-    calculate_array[calculate_array_index] = '';
-    calculate_array[calculate_array_index] = number_array[x];
-    calculate_array_index = calculate_array_index+2;
-  }
-  calculate_array_index = 1;
-  for(var z = 0; z < operator_array.length; z++){
-    calculate_array[calculate_array_index] = '';
-    calculate_array[calculate_array_index] = operator_array[z];
-    calculate_array_index = calculate_array_index + 2;
-  }
 
+  create_calc_array();
+
+  //turn all strings that are numbers into actual numbers so we can feed them into operator switch
   for(var y = 0; y < calculate_array.length; y++){
     if(calculate_array[y] != '+' && calculate_array[y] != '-' && calculate_array[y] != '*' && calculate_array[y] != '/'){
       calculate_array[y] = parseFloat(calculate_array[y]);
     }
   }
-}
 
-function solve_equation() {
-  create_calc_array();
+  //Handles multiplication and division first
   for(var j = 0; j < calculate_array.length; j++){
     if(calculate_array[j] == '*' || calculate_array[j] == '/'){
       operator_switch(calculate_array, j, j-1,j+1);
@@ -266,16 +250,24 @@ function solve_equation() {
     }
   }
 
+  //Handles addition and subtraction.
   for(var i = 0; i < calculate_array.length; i++){
     if(calculate_array[i] == '+' || calculate_array[i] == '-'){
       operator_switch(calculate_array, i, i-1, i+1);
       i = i-1;
     }
   }
+
+  //Stop any division by zero
   if(divide_zero_boolean){
     calculate_array[0] = 'undefined';
   }
-  final_number = calculate_array[0];
+
+  if(calculate_array[0]%1 != 0){
+    final_number = calculate_array[0].toFixed(2);
+  }else {
+    final_number = calculate_array[0];
+  }
   $input_box.val(final_number);
   clear_data();
   number_array[number_index] = final_number;
@@ -283,9 +275,9 @@ function solve_equation() {
 
 /********************
 Function name(s): clear data
-Purpose: This function clears the number_array values but NOT the display value
+Purpose: This function clears the relevant array values but NOT the display value
 Params: N/A
-Globals: number_array, operator, number_index, operator_array, operator_index
+Globals: number_array, number_index, operator, operator_array, operator_index, calculate_array
 returns: N/A
 ********************/
 
@@ -296,36 +288,30 @@ function clear_data() {
   operator_array = [];
   operator_index = 0;
   operator = '';
-  display_array = [];
-  display_index = 0;
-  for_display = '';
   calculate_array = [];
 }
 
-
 /********************
-Function name(s): A/C button
-Purpose: This function is triggered on the click of ac_button and clears 
-both the display and the data
-Params: N/A
-Globals: refresh_boolean
-returns: N/A
-********************/
+ Function name(s): refresh display
+ Purpose: This function clears the display values but NOT the number or operator arrays
+ Params: N/A
+ Globals: number_array, number_index, $input_box
+ returns: N/A
+ ********************/
+
+function refresh_display() {
+  $input_box.val(number_array[number_index]);
+}
+
+/***********************
+ * AC and Clear Buttons
+ */
 
 $('#ac_button').click(function(){
   clear_data();
   refresh_display();
   refresh_boolean = false;
 });
-
-/********************
-Function name(s): C button
-Purpose: This function is triggered on the click of c_button and clears 
-both the display and the data of the most recently typed number
-Params: N/A
-Globals: number_array, number_index, operator
-returns: N/A
-********************/
 
 $('#c_button').click(function() {
   if(!clear_boolean){
@@ -340,9 +326,13 @@ $('#c_button').click(function() {
 });
 
 
-/******************
- * fun stuff
- */
+/********************
+ Function name(s): background_switch
+ Purpose: This function switches the background after a certain number of button clicks and creates the basic sound effects
+ Params: N/A
+ Globals: bg_and_sound_counter, class_counter
+ returns: N/A
+ ********************/
 var bg_and_sound_counter = 0;
 var class_counter = 0;
 
@@ -358,8 +348,12 @@ function background_switch() {
 }
 
 
-/******************
- * Horizontally and Vertically Center something
+/***************************
+ * function name: center_element
+ * purpose: Basic function for centering a particular element
+ * @param element
+ * Globals: N/A
+ * returns: N/A
  */
 
 function center_element(element) {
@@ -375,7 +369,9 @@ function center_element(element) {
 
 }
 
-
+/*********************
+ * document ready
+ */
 
 $(document).ready(function(){
 
@@ -393,6 +389,10 @@ $(document).ready(function(){
   });
 
 });
+
+/************************
+ * Window load (necessary for the center_element function to work properly)
+ */
 
 $(window).load(function(){
 
