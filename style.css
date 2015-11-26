@@ -13,6 +13,9 @@ body {
 .background-0 {
 	background: url('photos/IMG_4213.jpg') no-repeat;
 	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-position: center;
 }
 
