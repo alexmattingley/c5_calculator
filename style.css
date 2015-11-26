@@ -51,7 +51,7 @@ body {
 
 .position-center {
 	position: absolute;
-	top: 45%; /**This is because things look a little weird perfectly centered**/
+	top: 50%; /**This is because things look a little weird perfectly centered**/
 	left: 50%;
 }
 
@@ -104,7 +104,7 @@ input.output-area {
 
 .number-bay button {
 	display: inline-block;
-	padding: 9% 0;
+	padding: 6% 0;
 	width: 31.9%;
 	text-align: center;
 }
@@ -115,7 +115,7 @@ input.output-area {
 
 .operator-bay button{
 	width: 100%;
-	padding: 38% 0;
+	padding: 18% 0;
 	text-align: center;
 }
 
