@@ -371,6 +371,26 @@ function center_element(element) {
 
 }
 
+
+/******************************
+ * function for fixing vh units in IOS
+ * detect if vh units are being used:
+ * http://stackoverflow.com/questions/16778814/read-css-property-from-stylesheet
+ */
+
+//If so do the following.
+
+var iOS = navigator.userAgent.match(/(iPod|iPhone|iPad)/);
+function iosVhHeightBug(domElement, percentHeight) {
+  if(iOS){
+    console.log('this should not be firing');
+    var windowHeight = $(window).height();
+    var height = percentHeight/100 * windowHeight;
+    $(domElement).css('min-height', height);
+  }
+
+}
+
 /*********************
  * document ready
  */
@@ -399,9 +419,13 @@ $(document).ready(function(){
 $(window).load(function(){
 
   center_element('.position-center');
+  iosVhHeightBug('body', 100);
 
 });
 
+$(window).resize(function(){
+  iosVhHeightBug('body', 100)
+});
 
 
 
