@@ -363,9 +363,11 @@ function center_element(element) {
   var margin_top_offset = element_height/-2;
   var element_width = $(element).outerWidth();
   var margin_left_offset = element_width/-2;
-  $(element).addClass('position-center');
   $(element).css('margin-top', margin_top_offset);
   $(element).css('margin-left', margin_left_offset);
+  $(element).css('position', 'absolute');
+  $(element).css('top', '50%');
+  $(element).css('left', '50%');
 
 }
 
