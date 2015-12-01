@@ -359,13 +359,11 @@ function background_switch() {
  */
 
 function center_element(element) {
-  $(element).addClass('position-center');
   var element_height = $(element).outerHeight();
-  console.log(element_height);
   var margin_top_offset = element_height/-2;
   var element_width = $(element).outerWidth();
-  console.log(element_width);
   var margin_left_offset = element_width/-2;
+  $(element).addClass('position-center');
   $(element).css('margin-top', margin_top_offset);
   $(element).css('margin-left', margin_left_offset);
 
