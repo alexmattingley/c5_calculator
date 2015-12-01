@@ -5,6 +5,8 @@
 I initially began this project during my time as a student at LearningFuze. The idea behind the project was to create a very basic calculator using javascript to perform the basic calculations.
 I noticed that alot of the calculators that I found online didn't look very nice, so I wanted to design something a little different that was visually appealing.
 
+####A Note: The calculator works on a mobile phone, but it looks best on a tablet or a desktop.
+
 
 ##Site challenges and Fun Problems
 
