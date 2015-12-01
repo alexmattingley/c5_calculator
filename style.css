@@ -49,6 +49,10 @@ body {
 	background-position: center;
 }
 
+.position-center {
+	position: relative;
+}
+
 .calculator-container {
 	width: 95%;
 	margin: auto;
